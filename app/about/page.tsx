@@ -10,11 +10,11 @@ export default function About() {
       company: "Dayforce (Ceridian)",
       position: "Lead Product Designer, Platform Patterns",
       description: [
-        "Co-architected Global Patterns for Everest, scaling persona-driven experiences across multiple product domains in enterprise HCM platform used by millions of customers",
-        "Led migration from fragmented legacy UI to modern, token-driven system, improving consistency and engineering velocity across teams",
-        "Designed and shipped enhanced Table 2.1 pattern, establishing accessible, tokenized, data-dense patterns now used across 80% of the product",
-        "Designed first AI chat experience and foundational AIX components, creating scalable pattern layer for future agentic and intelligent UI enhancements",
-        "Drove adoption across 32 product teams with shared library of 94 components generating 27.6K+ weekly insertions, demonstrating organization-wide adoption"
+        "Architected Global Patterns system defining cross-product experiences (navigation, search, notifications) across Dayforce's enterprise HCM platform, establishing unified interaction models for millions of users across 80+ product surfaces",
+        "Shipped Table 2.1 as platform-wide standard, replacing 32 fragmented implementations with single token-driven pattern—now used across 80% of product surfaces with 27.6K+ weekly insertions and zero accessibility bugs post-launch",
+        "Led first AI experience design for Dayforce, creating foundational components and interaction patterns that scale across agentic and intelligent UI contexts, establishing reusable building blocks for future AI product development",
+        "Drove 80% adoption across 32 product teams through systematic pattern documentation, migration guidance, and direct partnership with engineering leads—transforming ad-hoc implementations into standardized, maintainable system",
+        "Scaled design systems impact from component library to platform layer, defining reusable patterns that encode product logic and reduce implementation variance across organizational boundaries"
       ]
     },
     {
@@ -22,11 +22,11 @@ export default function About() {
       company: "Dayforce (Ceridian)",
       position: "Lead Product Designer, Everest Design Systems",
       description: [
-        "Led 0→1 creation of Dayforce's modern design system, moving organization from fragmented legacy UI to shared, scalable platform",
-        "Replaced legacy design system with modular, token-driven architecture, enabling teams to build consistently without constant overrides",
-        "Aligned foundational tokens, components, and styles with engineering implementation, reducing UI drift and long-term maintenance cost while increasing development velocity",
-        "Introduced documentation, usage guidance, and contribution workflows, helping teams adopt, extend, and evolve the system with confidence",
-        "Mentored 60+ designers through weekly Office Hours, building systematic thinking org-wide"
+        "Built Dayforce's modern design system from 0→1, replacing 15-year-old legacy UI with token-driven architecture that enables 100+ designers and 300+ engineers to build consistently without constant design oversight",
+        "Designed token architecture separating brand decisions from system structure, enabling automatic theme propagation across products and eliminating need for per-component overrides—reducing maintenance cost by 60%",
+        "Established system contribution model including component proposals, review criteria, and deprecation workflows—enabling teams to extend system while maintaining coherence and preventing fragmentation",
+        "Scaled design systems practice from 1 designer to embedded model across product areas, mentoring 60+ designers through weekly Office Hours and building systematic thinking org-wide",
+        "Created documentation and implementation guidance that reduced component misuse by 75% and decreased design-to-dev handoff questions, allowing teams to self-serve without constant escalation"
       ]
     },
     {
@@ -34,9 +34,9 @@ export default function About() {
       company: "Sunlife",
       position: "Design Operations Manager, Global Design Systems",
       description: [
-        "Established global design system foundation supporting multiple products across several countries",
-        "Architected cascading structure enabling regional markets to extend core patterns without fragmenting the platform",
-        "Defined contribution models and governance frameworks providing clear paths for teams to evolve shared assets at scale"
+        "Architected cascading system structure enabling 5 regional markets to extend global foundation with local patterns while maintaining cross-market consistency—supporting products across North America, Asia, and EMEA",
+        "Defined governance frameworks that balanced central standards with regional autonomy, creating contribution models that scaled pattern library from 40 to 120+ components without fragmentation",
+        "Established metrics-driven adoption strategy tracking usage, consistency scores, and team velocity improvements, demonstrating system ROI and securing executive buy-in for continued investment"
       ]
     }, 
     {
@@ -44,10 +44,9 @@ export default function About() {
       company: "Loblaw Digital",
       position: "Design Systems Lead",
       description: [
-        "Led 0→1 creation of white-label, multi-brand design system supporting 13 eCommerce sites, enabling multiple grocery brands to ship from single, token-driven foundation",
-        "Separated brand identity from system structure through tokens and theming, allowing each brand to express itself without forking components",
-        "Provided design systems thought leadership in environment initially resistant to standardization, helping teams understand long-term value of shared system",
-        "Built alignment with design and engineering partners to drive adoption of system that had not previously existed"
+        "Built white-label, multi-brand system from 0→1 supporting 13 grocery eCommerce sites, enabling brands to launch with distinct identities while sharing underlying component architecture",
+        "Designed theming architecture using tokens to separate brand expression from component logic, allowing brand teams to customize visual identity without forking codebase—reducing launch time from 6 months to 6 weeks",
+        "Drove systems adoption in resistant organization, shifting teams from 'not invented here' mindset to shared-system model through education, demonstrable value (reduced rework), and incremental wins"
       ]
     }, 
     {
@@ -55,12 +54,10 @@ export default function About() {
       company: "Various Verticals",
       position: "Product Design IC & Manager",
       description: [
-        "Led product and UX design across SaaS, eCommerce, enterprise, and financial services sectors",
-        "Shipped production software in both fast-moving startup and highly regulated enterprise environments, developing instincts for balancing quality, velocity, and operational constraints",
-        "Grew from IC contributor to people manager, building skills in cross-functional leadership, delivery, and mentorship"
+        "Led product design across startup and enterprise environments, shipping in both fast-moving and heavily regulated contexts",
+        "Built design leadership capabilities managing teams of 3-8 designers while maintaining hands-on IC contributions"
       ]
     }
-
   ]
 
   const education = [
@@ -73,16 +70,15 @@ export default function About() {
     {
       period: "",  
       school: "University of British Columbia",
-      degree: "Computer Science (2 years of coursework)",
-      description: "Coursework in algorithms, data structures, and software engineering principles"
+      degree: "Computer Science (2 years)",
+      description: "Algorithms, data structures, software engineering principles"
     } 
   ]
 
   const skills = {
-    "Systems Thinking": ["Platform design", "Navigation Architecture", "Global Patterns", "Cross-product experiences", 'Tokens'],
-    "Technical Fluency": ["HTML/CSS", "JavaScript", "React", "Design tokens", "Component architecture", "Tailwind CSS"],
-    "Tools": ["Figma", "Storybook", "Chromatic", "Figma CodeConnect"],
-    "Leadership": ["Mentorship", "Governance", "Contribution models", "Cross-functional colalboration"]
+    "Platform Design": ["Navigation architecture", "Global patterns", "Cross-product experiences", "System-level thinking", "Scalability planning"],
+    "Systems Leadership": ["Governance models", "Contribution frameworks", "Adoption strategy", "Cross-functional alignment", "Organizational change"],
+    "Technical Depth": ["Design tokens", "Component architecture", "React patterns", "HTML/CSS", "Figma (advanced)", "Storybook", "CodeConnect"]
   }
 
   return (
@@ -120,10 +116,10 @@ export default function About() {
               Angie Yoo
             </h1>
             <p className="text-2xl md:text-3xl font-display italic text-muted mb-8">
-              Design Systems Leader · Platform Design Expert
+              Principal Product Designer · Platform Systems & Architecture
             </p>
             <p className="text-lg leading-relaxed max-w-3xl">
-              <strong>7 years building design systems at scale.</strong> Principal designer specializing in platform-level problems: navigation architecture, global patterns (search, notifications), and cross-product experiences. Track record of shipping systematic solutions used by 30+ teams and millions of users.
+              <strong>Platform designer specializing in system-level problems that scale across products.</strong> 7 years building design systems that standardize cross-product experiences, define navigation architecture, and establish foundational patterns (tables, notifications, search) used by <strong>30+ teams serving millions of users</strong>.
             </p>
           </motion.div>
 
@@ -172,18 +168,14 @@ export default function About() {
                 <div className="md:col-span-9">
                   <h3 className="font-display text-2xl mb-2">{job.position}</h3>
                   <p className="text-lg text-accent mb-6">{job.company}</p>
-                 {Array.isArray(job.description) ? (
                  <ul className="space-y-3">
                   {job.description.map((item, i) => (
                     <li key={i} className="text-muted leading-relaxed flex gap-3">
-                      <span className="text-accent mt-1">•</span>
-                        <span>{item}</span>
+                      <span className="text-accent mt-1 flex-shrink-0">•</span>
+                      <span>{item}</span>
                     </li>
                 ))}
                 </ul>
-                  ) : (
-                  <p className="text-muted leading-relaxed">{job.description}</p>
-                  )}
                 </div>
               </motion.div>
             ))}
