@@ -1,11 +1,9 @@
 'use client'
 
-import { motion, useReducedMotion } from "framer-motion";
-
+import { motion, useReducedMotion } from "framer-motion"
 import { useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-
 
 
 const container = {
