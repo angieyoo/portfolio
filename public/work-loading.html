@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading States — Platform Pattern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            -webkit-font-smoothing: antialiased;
+            background: white;
+        }
+        
+        .font-display { font-family: 'Bodoni Moda', serif; }
+        .accent { color: #00a86b; }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr min(72ch, 90%) 1fr;
+            gap: 2rem;
+        }
+        .content-grid > * { grid-column: 2; }
+        .full-bleed { grid-column: 1 / -1; }
+        
+        .eyebrow {
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+            opacity: 0.5;
+        }
+
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .skeleton {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            background: #e5e7eb;
+            border-radius: 4px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <nav class="border-b border-gray-200 bg-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <a href="/" class="text-xs hover:opacity-50 transition">← Back</a>
+            <div class="text-xs opacity-30">Platform Patterns · 2024</div>
+        </div>
+    </nav>
+
+    <main class="pb-24">
+        <!-- Hero -->
+        <section class="content-grid py-20">
+            <div>
+                <div class="eyebrow accent mb-6">UX Pattern · Everest Design System</div>
+                <h1 class="font-display text-6xl leading-none mb-8">Loading States</h1>
+                <p class="text-xl opacity-60 leading-relaxed max-w-xl">
+                    Defining rules for a slow application—making wait times feel faster through better loading patterns
+                </p>
+            </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">The Problem</div>
+                <h2 class="font-display text-4xl mb-8">Legacy app, lots of waiting</h2>
+                <div class="space-y-6 text-lg leading-relaxed opacity-80">
+                    <p>
+                        Dayforce is a legacy enterprise system. It's <strong>slow</strong>. Users encounter loading states constantly—opening pages, running reports, saving data, filtering tables. We can't magically make the backend faster, but we can make waiting feel better.
+                    </p>
+                    <p>
+                        The problem: Every team handled loading differently. Some showed full-screen spinners. Some showed nothing. Some froze the UI. No consistency, no standards, no thought about what kind of loading pattern fits which context.
+                    </p>
+                </div>
+
+                <div class="mt-12 grid md:grid-cols-2 gap-6">
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Full-Screen Blockers</div>
+                        <div class="text-sm opacity-60">Page loads showed full-screen spinners. Couldn't do anything else while waiting 3-5 seconds.</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">No Feedback</div>
+                        <div class="text-sm opacity-60">Some actions gave zero feedback. Click button, nothing happens, wait... did it work? Click again. Now it's double-submitted.</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Wrong Patterns</div>
+                        <div class="text-sm opacity-60">Tables loaded with spinners instead of skeleton rows. Progress bars for indeterminate waits. No distinction between contexts.</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Frozen UI</div>
+                        <div class="text-sm opacity-60">Some features just froze. Cursor turned to loading spinner, but nothing on screen indicated progress.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Overview -->
+        <section class="full-bleed bg-gray-50 py-20 mb-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-6">Solution</div>
+                    <h2 class="font-display text-4xl mb-8">Context-appropriate loading patterns</h2>
+                    <p class="text-lg opacity-80 leading-relaxed mb-12">
+                        We couldn't fix the performance. But we could define <strong>rules</strong> for which loading pattern to use when—based on context, duration, and user needs.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg border border-gray-200">
+                    <div class="font-display text-2xl mb-8">The Core Principle</div>
+                    <div class="text-lg leading-relaxed opacity-80">
+                        <strong>Different types of loading require different patterns.</strong> Page loads need skeleton screens. Table refreshes need inline spinners. Long processes need progress bars. Button actions need loading states. Match the pattern to the context.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Pattern Types -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">Pattern Library</div>
+                <h2 class="font-display text-4xl mb-12">Five loading patterns</h2>
+            </div>
+
+            <!-- Pattern 1: Skeleton -->
+            <div class="py-12 border-t border-gray-200">
+                <div class="grid md:grid-cols-12 gap-8">
+                    <div class="md:col-span-4">
+                        <div class="font-display text-2xl mb-3">Skeleton Screens</div>
+                        <div class="text-sm opacity-60 mb-4">For: Initial page loads, table data loading</div>
+                    </div>
+                    <div class="md:col-span-8">
+                        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-4">
+                            <!-- Skeleton example -->
+                            <div class="space-y-3">
+                                <div class="skeleton h-4 w-3/4"></div>
+                                <div class="skeleton h-4 w-full"></div>
+                                <div class="skeleton h-4 w-5/6"></div>
+                                <div class="skeleton h-4 w-full"></div>
+                            </div>
+                        </div>
+                        <div class="text-sm space-y-2">
+                            <div><strong>Why:</strong> Shows structure while loading. Less jarring than blank screen.</div>
+                            <div><strong>When:</strong> Page loads, table data fetching (>500ms)</div>
+                            <div><strong>Never:</strong> Button clicks, quick actions (<500ms)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pattern 2: Spinner -->
+            <div class="py-12 border-t border-gray-200">
+                <div class="grid md:grid-cols-12 gap-8">
+                    <div class="md:col-span-4">
+                        <div class="font-display text-2xl mb-3">Inline Spinners</div>
+                        <div class="text-sm opacity-60 mb-4">For: Localized loading, component refreshes</div>
+                    </div>
+                    <div class="md:col-span-8">
+                        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-4 flex items-center justify-center h-32">
+                            <div class="w-8 h-8 border-4 border-gray-300 border-t-gray-900 rounded-full spinner"></div>
+                        </div>
+                        <div class="text-sm space-y-2">
+                            <div><strong>Why:</strong> Minimal, unobtrusive. Doesn't block entire UI.</div>
+                            <div><strong>When:</strong> Card refreshing, section reloading, search results updating</div>
+                            <div><strong>Never:</strong> Full page loads (use skeleton instead)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pattern 3: Progress Bar -->
+            <div class="py-12 border-t border-gray-200">
+                <div class="grid md:grid-cols-12 gap-8">
+                    <div class="md:col-span-4">
+                        <div class="font-display text-2xl mb-3">Progress Bars</div>
+                        <div class="text-sm opacity-60 mb-4">For: Determinate processes with known duration</div>
+                    </div>
+                    <div class="md:col-span-8">
+                        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-4">
+                            <div class="mb-2 text-sm">Processing payroll...</div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: 60%"></div>
+                            </div>
+                            <div class="mt-2 text-xs opacity-60">Step 3 of 5: Calculating deductions</div>
+                        </div>
+                        <div class="text-sm space-y-2">
+                            <div><strong>Why:</strong> Shows progress + time remaining. Reduces anxiety.</div>
+                            <div><strong>When:</strong> File uploads, report generation, batch processing</div>
+                            <div><strong>Never:</strong> Unknown duration (use spinner instead)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pattern 4: Button Loading -->
+            <div class="py-12 border-t border-gray-200">
+                <div class="grid md:grid-cols-12 gap-8">
+                    <div class="md:col-span-4">
+                        <div class="font-display text-2xl mb-3">Button States</div>
+                        <div class="text-sm opacity-60 mb-4">For: Action feedback, preventing double-submit</div>
+                    </div>
+                    <div class="md:col-span-8">
+                        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-4 space-y-4">
+                            <div>
+                                <div class="text-xs mb-2 opacity-60">Default</div>
+                                <button class="bg-green-600 text-white px-4 py-2 rounded font-medium">Save Employee</button>
+                            </div>
+                            <div>
+                                <div class="text-xs mb-2 opacity-60">Loading</div>
+                                <button class="bg-green-600 text-white px-4 py-2 rounded font-medium opacity-75 cursor-not-allowed flex items-center gap-2" disabled>
+                                    <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full spinner"></div>
+                                    Saving...
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-sm space-y-2">
+                            <div><strong>Why:</strong> Clear feedback that action is processing. Prevents double-submit.</div>
+                            <div><strong>When:</strong> Any button that triggers async action (save, submit, delete)</div>
+                            <div><strong>Never:</strong> Navigation buttons (instant actions)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pattern 5: Table-Specific -->
+            <div class="py-12 border-t border-gray-200">
+                <div class="grid md:grid-cols-12 gap-8">
+                    <div class="md:col-span-4">
+                        <div class="font-display text-2xl mb-3">Table Loading</div>
+                        <div class="text-sm opacity-60 mb-4">For: Table data refreshes (sort, filter, paginate)</div>
+                    </div>
+                    <div class="md:col-span-8">
+                        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-4">
+                            <div class="border border-gray-300 rounded">
+                                <div class="bg-gray-100 p-3 border-b border-gray-300 flex items-center justify-between">
+                                    <div class="text-sm font-medium">Employee List</div>
+                                    <div class="w-4 h-4 border-2 border-gray-600 border-t-transparent rounded-full spinner"></div>
+                                </div>
+                                <div class="p-4 space-y-3 opacity-50">
+                                    <div class="skeleton h-8 w-full"></div>
+                                    <div class="skeleton h-8 w-full"></div>
+                                    <div class="skeleton h-8 w-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-sm space-y-2">
+                            <div><strong>Why:</strong> Shows existing data + loading indicator. Less disruptive than full replacement.</div>
+                            <div><strong>When:</strong> Sort, filter, pagination, search</div>
+                            <div><strong>Never:</strong> Initial load (use full skeleton rows instead)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Decision Framework -->
+        <section class="full-bleed bg-gray-50 py-20 mb-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-6">Decision Framework</div>
+                    <h2 class="font-display text-4xl mb-12">Choosing the right pattern</h2>
+                </div>
+
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-50 border-b border-gray-200">
+                                <tr>
+                                    <th class="text-left p-4 font-medium">Context</th>
+                                    <th class="text-left p-4 font-medium">Duration</th>
+                                    <th class="text-left p-4 font-medium">Pattern</th>
+                                    <th class="text-left p-4 font-medium">Reason</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="p-4">Page load</td>
+                                    <td class="p-4">>500ms</td>
+                                    <td class="p-4 font-medium accent">Skeleton</td>
+                                    <td class="p-4 opacity-60">Shows structure, reduces perceived wait</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">Button click</td>
+                                    <td class="p-4">Any</td>
+                                    <td class="p-4 font-medium accent">Button loading</td>
+                                    <td class="p-4 opacity-60">Immediate feedback, prevents double-submit</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">Table sort/filter</td>
+                                    <td class="p-4">>300ms</td>
+                                    <td class="p-4 font-medium accent">Dim + spinner</td>
+                                    <td class="p-4 opacity-60">Less disruptive than replacing all data</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">Card refresh</td>
+                                    <td class="p-4">>500ms</td>
+                                    <td class="p-4 font-medium accent">Inline spinner</td>
+                                    <td class="p-4 opacity-60">Localized, doesn't block other content</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">Report generation</td>
+                                    <td class="p-4">>5s, known</td>
+                                    <td class="p-4 font-medium accent">Progress bar</td>
+                                    <td class="p-4 opacity-60">Shows progress, reduces anxiety on long waits</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">Search results</td>
+                                    <td class="p-4"><300ms</td>
+                                    <td class="p-4 font-medium accent">None</td>
+                                    <td class="p-4 opacity-60">Too fast, loading state would flash</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rules -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">Rules & Guidelines</div>
+                <h2 class="font-display text-4xl mb-12">When to show loading states</h2>
+            </div>
+
+            <div class="space-y-8">
+                <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                    <div class="font-medium mb-2">Rule 1: Delay threshold</div>
+                    <div class="text-sm opacity-80">
+                        Don't show loading states for actions <300ms. Loading indicator would flash, making UI feel slower. Show loading only if it takes >300ms.
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                    <div class="font-medium mb-2">Rule 2: Preserve context</div>
+                    <div class="text-sm opacity-80">
+                        Don't replace content with spinners. Dim existing content + show loading indicator. Users maintain context of what they were looking at.
+                    </div>
+                </div>
+
+                <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500">
+                    <div class="font-medium mb-2">Rule 3: Show structure early</div>
+                    <div class="text-sm opacity-80">
+                        For page loads, show skeleton of final layout immediately. Don't show blank screen then pop in content. Progressive disclosure feels faster.
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-500">
+                    <div class="font-medium mb-2">Rule 4: Prevent double-actions</div>
+                    <div class="text-sm opacity-80">
+                        Always disable buttons during loading. Show loading state. Prevents users from clicking again and double-submitting.
+                    </div>
+                </div>
+
+                <div class="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-500">
+                    <div class="font-medium mb-2">Rule 5: Match duration to pattern</div>
+                    <div class="text-sm opacity-80">
+                        Quick actions (<2s): Spinner. Medium (2-5s): Skeleton or inline spinner. Long (>5s): Progress bar if determinate, spinner + message if not.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact -->
+        <section class="full-bleed bg-black text-white py-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-8" style="color: #00a86b;">Impact</div>
+                    <h2 class="font-display text-4xl mb-16">Slower app, better experience</h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-12 mb-16">
+                        <div>
+                            <div class="text-5xl font-display mb-3">45%</div>
+                            <div class="text-sm opacity-60">Reduction in "app is slow" complaints</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-display mb-3">Zero</div>
+                            <div class="text-sm opacity-60">Full-screen loading blockers</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-display mb-3">5</div>
+                            <div class="text-sm opacity-60">Clear patterns for every context</div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="border-l-2 pl-6" style="border-color: #00a86b;">
+                            <div class="text-sm mb-2 opacity-60">Perceived Performance</div>
+                            <div class="opacity-90">App is still slow, but feels faster. Skeleton screens and progressive disclosure make waits more tolerable.</div>
+                        </div>
+                        <div class="border-l-2 pl-6" style="border-color: #00a86b;">
+                            <div class="text-sm mb-2 opacity-60">Consistency</div>
+                            <div class="opacity-90">All teams use same loading patterns. Users learned what to expect when waiting.</div>
+                        </div>
+                        <div class="border-l-2 pl-6" style="border-color: #00a86b;">
+                            <div class="text-sm mb-2 opacity-60">Fewer Errors</div>
+                            <div class="opacity-90">Button loading states prevent double-submits. Users stopped clicking multiple times.</div>
+                        </div>
+                        <div class="border-l-2 pl-6" style="border-color: #00a86b;">
+                            <div class="text-sm mb-2 opacity-60">Clear Rules</div>
+                            <div class="opacity-90">Teams have decision framework. No more guessing which pattern to use.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back to Work -->
+        <section class="content-grid py-20">
+            <a href="/" class="group">
+                <div class="eyebrow mb-4 opacity-40 group-hover:opacity-100 transition">All Projects</div>
+                <div class="font-display text-3xl group-hover:italic transition">← Back to Work</div>
+            </a>
+        </section>
+    </main>
+</body>
+</html>

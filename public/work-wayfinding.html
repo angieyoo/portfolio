@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayfinding — Platform Pattern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            -webkit-font-smoothing: antialiased;
+            background: white;
+        }
+        
+        .font-display { font-family: 'Bodoni Moda', serif; }
+        .accent { color: #00a86b; }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr min(72ch, 90%) 1fr;
+            gap: 2rem;
+        }
+        .content-grid > * { grid-column: 2; }
+        .full-bleed { grid-column: 1 / -1; }
+        
+        .eyebrow {
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <nav class="border-b border-gray-200 bg-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <a href="/" class="text-xs hover:opacity-50 transition">← Back</a>
+            <div class="text-xs opacity-30">Platform Patterns · 2024</div>
+        </div>
+    </nav>
+
+    <main class="pb-24">
+        <!-- Hero -->
+        <section class="content-grid py-20">
+            <div>
+                <div class="eyebrow accent mb-6">Information Architecture · Everest Design System</div>
+                <h1 class="font-display text-6xl leading-none mb-8">Wayfinding</h1>
+                <p class="text-xl opacity-60 leading-relaxed max-w-xl">
+                    Redesigning navigation and IA for an enterprise platform that grew organically—from chaos to user-centered structure
+                </p>
+            </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">The Problem</div>
+                <h2 class="font-display text-4xl mb-8">No IA, no wayfinding</h2>
+                <div class="space-y-6 text-lg leading-relaxed opacity-80">
+                    <p>
+                        Dayforce had <strong>no information architecture</strong>. For years, product teams could add new pages whenever they wanted. The global nav became a dumping ground—too long, too nested, organized by org structure instead of user needs.
+                    </p>
+                    <p>
+                        Users couldn't find anything. Navigation had 50+ top-level items, some nested 4-5 levels deep. No search. No breadcrumbs. No sense of "where am I?"
+                    </p>
+                </div>
+
+                <div class="mt-12 grid md:grid-cols-2 gap-6">
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Org-Driven Structure</div>
+                        <div class="text-sm opacity-60">Nav reflected internal teams, not user workflows. "Payroll" separate from "Compensation" even though users needed both together.</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Unbounded Growth</div>
+                        <div class="text-sm opacity-60">Any team could add a nav item. No governance. Nav grew to 50+ items, some nested 5 levels deep.</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">No Landing Pages</div>
+                        <div class="text-sm opacity-60">Click "Recruiting"—goes directly to candidate list. No overview, no dashboard, no context about what's in this area.</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">No Search</div>
+                        <div class="text-sm opacity-60">Users forced to remember where everything lived. Couldn't type "time off request" to find it quickly.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Overview -->
+        <section class="full-bleed bg-gray-50 py-20 mb-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-6">Solution</div>
+                    <h2 class="font-display text-4xl mb-8">A complete wayfinding system</h2>
+                    <p class="text-lg opacity-80 leading-relaxed mb-12">
+                        We didn't just redesign the nav—we built an entire wayfinding system including global nav, feature nav, omnibar search, and dashboard templates.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="text-sm font-medium mb-3 accent">01 Global Nav</div>
+                        <div class="font-display text-xl mb-4">Primary navigation</div>
+                        <div class="text-sm opacity-80 leading-relaxed">
+                            Streamlined to 8-10 top-level "districts" organized by user mental models, not org structure. Collapsible, persistent left sidebar.
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="text-sm font-medium mb-3 accent">02 Feature Nav</div>
+                        <div class="font-display text-xl mb-4">Secondary navigation</div>
+                        <div class="text-sm opacity-80 leading-relaxed">
+                            Contextual nav within each district. Shows pages/features specific to current area. Tab-like pattern at top of content.
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="text-sm font-medium mb-3 accent">03 Omnibar</div>
+                        <div class="font-display text-xl mb-4">Global search</div>
+                        <div class="text-sm opacity-80 leading-relaxed">
+                            Cmd+K to search anything. Pages, employees, reports, settings. Autocomplete, recent items, quick actions.
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="text-sm font-medium mb-3 accent">04 Dashboard Template</div>
+                        <div class="font-display text-xl mb-4">Landing pages</div>
+                        <div class="text-sm opacity-80 leading-relaxed">
+                            Every Level 1 page gets a dashboard. Overview, quick actions, recent activity. Orients users before diving in.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Districts Concept -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">Key Innovation</div>
+                <h2 class="font-display text-4xl mb-12">Organizing around "districts"</h2>
+                
+                <div class="space-y-6 text-lg leading-relaxed opacity-80 mb-12">
+                    <p>
+                        The biggest insight: Dayforce's IA reflected <strong>how we're organized internally</strong>, not how users think about their work.
+                    </p>
+                    <p>
+                        We needed to group product areas in a way that matched <strong>user mental models</strong>—without alienating users who'd learned the old structure.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-lg mb-12">
+                    <div class="font-display text-2xl mb-6">The Districts Approach</div>
+                    <div class="text-sm opacity-80 leading-relaxed mb-6">
+                        Instead of "Payroll" + "Compensation" + "Benefits" as separate silos, we grouped related areas into coherent districts based on user workflows.
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-green-500 pl-6 py-3 bg-white rounded">
+                            <div class="font-medium mb-2">District: People</div>
+                            <div class="text-xs opacity-60">Employee profiles, org charts, demographics, personal info</div>
+                        </div>
+
+                        <div class="border-l-4 border-blue-500 pl-6 py-3 bg-white rounded">
+                            <div class="font-medium mb-2">District: Pay</div>
+                            <div class="text-xs opacity-60">Payroll, compensation, bonuses, deductions—everything related to paying people</div>
+                        </div>
+
+                        <div class="border-l-4 border-purple-500 pl-6 py-3 bg-white rounded">
+                            <div class="font-medium mb-2">District: Time</div>
+                            <div class="text-xs opacity-60">Timesheets, schedules, time off, attendance—everything time-related</div>
+                        </div>
+
+                        <div class="border-l-4 border-orange-500 pl-6 py-3 bg-white rounded">
+                            <div class="font-medium mb-2">District: Talent</div>
+                            <div class="text-xs opacity-60">Recruiting, onboarding, performance, learning, succession planning</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 p-6 rounded border-l-4 border-yellow-500">
+                    <div class="text-sm font-medium mb-2">The Challenge</div>
+                    <div class="text-sm opacity-80 leading-relaxed">
+                        How do we reorganize without breaking existing users' muscle memory? We tested extensively, provided migration guides, and rolled out gradually to minimize disruption.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three-Level Hierarchy -->
+        <section class="full-bleed bg-gray-50 py-20 mb-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-6">Navigation Architecture</div>
+                    <h2 class="font-display text-4xl mb-12">Three-level hierarchy</h2>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="flex items-start gap-6">
+                            <div class="text-4xl font-display accent">L1</div>
+                            <div class="flex-1">
+                                <div class="font-display text-2xl mb-3">Districts (Global Nav)</div>
+                                <div class="text-sm opacity-80 leading-relaxed mb-4">
+                                    8-10 top-level areas. Always visible in left sidebar. Click to enter district, see dashboard.
+                                </div>
+                                <div class="text-xs opacity-60">Example: People, Pay, Time, Talent, Benefits, Reports</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="flex items-start gap-6">
+                            <div class="text-4xl font-display accent">L2</div>
+                            <div class="flex-1">
+                                <div class="font-display text-2xl mb-3">Features (Feature Nav)</div>
+                                <div class="text-sm opacity-80 leading-relaxed mb-4">
+                                    Major features within a district. Shown in horizontal tabs at top of content area. Specific to current district.
+                                </div>
+                                <div class="text-xs opacity-60">Example: In "Pay" district → Payroll, Compensation, Bonuses, Deductions</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="flex items-start gap-6">
+                            <div class="text-4xl font-display accent">L3</div>
+                            <div class="flex-1">
+                                <div class="font-display text-2xl mb-3">Pages (In-Feature)</div>
+                                <div class="text-sm opacity-80 leading-relaxed mb-4">
+                                    Specific pages/views within a feature. Usually accessed via dashboard links or breadcrumbs. Not always visible in nav.
+                                </div>
+                                <div class="text-xs opacity-60">Example: Within "Payroll" → Pay Runs, Pay Calendars, Pay Groups</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Omnibar -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">Search & Discovery</div>
+                <h2 class="font-display text-4xl mb-12">Omnibar: The escape hatch</h2>
+                
+                <div class="space-y-6 text-lg leading-relaxed opacity-80 mb-8">
+                    <p>
+                        Even the best IA can't predict every user need. The <strong>omnibar</strong> (Cmd+K) is the escape hatch—search anything, go anywhere, fast.
+                    </p>
+                </div>
+
+                <div class="bg-gray-900 text-white p-8 rounded-lg mb-8">
+                    <div class="text-xs mb-4 opacity-50">OMNIBAR (CMD+K)</div>
+                    <div class="bg-gray-800 rounded p-4 mb-6">
+                        <input 
+                            type="text" 
+                            placeholder="Search or jump to..." 
+                            class="bg-transparent w-full text-white outline-none"
+                            disabled
+                        />
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="opacity-60 text-xs mb-2">RECENT</div>
+                        <div class="flex items-center gap-3 p-2 hover:bg-gray-800 rounded cursor-pointer">
+                            <div class="w-6 h-6 bg-gray-700 rounded"></div>
+                            <div>Employee: John Smith</div>
+                        </div>
+                        <div class="flex items-center gap-3 p-2 hover:bg-gray-800 rounded cursor-pointer">
+                            <div class="w-6 h-6 bg-gray-700 rounded"></div>
+                            <div>Pay Run: Jan 2026</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 text-sm">
+                    <div class="border-l-2 border-green-500 pl-4 py-2">
+                        <div class="font-medium mb-1">Pages</div>
+                        <div class="text-xs opacity-60">Jump to any page by name</div>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4 py-2">
+                        <div class="font-medium mb-1">Employees</div>
+                        <div class="text-xs opacity-60">Search by name, ID, email</div>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4 py-2">
+                        <div class="font-medium mb-1">Quick Actions</div>
+                        <div class="text-xs opacity-60">Create employee, run payroll</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Template -->
+        <section class="full-bleed bg-gray-50 py-20 mb-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-6">Landing Pages</div>
+                    <h2 class="font-display text-4xl mb-12">Dashboard template for every district</h2>
+                    
+                    <div class="space-y-6 text-lg leading-relaxed opacity-80 mb-12">
+                        <p>
+                            Previously, clicking "Payroll" took you directly to a list. No context. No overview. Just data.
+                        </p>
+                        <p>
+                            Now, every Level 1 district has a <strong>dashboard landing page</strong> that orients users before they dive into specific features.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg border border-gray-200 mb-8">
+                        <div class="font-display text-2xl mb-6">Dashboard Anatomy</div>
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="text-2xl">📊</div>
+                                <div>
+                                    <div class="font-medium mb-1">Overview Cards</div>
+                                    <div class="text-sm opacity-60">Key metrics, status summaries. "3 pay runs this month", "12 pending approvals"</div>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="text-2xl">⚡</div>
+                                <div>
+                                    <div class="font-medium mb-1">Quick Actions</div>
+                                    <div class="text-sm opacity-60">Common tasks. "Create employee", "Run payroll", "Submit time off"</div>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="text-2xl">🕒</div>
+                                <div>
+                                    <div class="font-medium mb-1">Recent Activity</div>
+                                    <div class="text-sm opacity-60">Last viewed employees, recent pay runs, draft reports</div>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="text-2xl">🔗</div>
+                                <div>
+                                    <div class="font-medium mb-1">Feature Links</div>
+                                    <div class="text-sm opacity-60">Navigate to major features within district. Alternative to feature nav tabs.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">Impact</div>
+                <h2 class="font-display text-4xl mb-12">From lost to oriented</h2>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div>
+                        <div class="text-5xl font-display mb-3">65%</div>
+                        <div class="text-sm opacity-60">Reduction in "where is..." support tickets</div>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-display mb-3">8</div>
+                        <div class="text-sm opacity-60">Districts instead of 50+ top-level items</div>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-display mb-3">10K+</div>
+                        <div class="text-sm opacity-60">Daily omnibar searches</div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="border-l-2 border-green-500 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Discoverability</div>
+                        <div class="text-sm opacity-60">Users can find features they didn't know existed. Dashboard pages surface related capabilities.</div>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Mental Model Alignment</div>
+                        <div class="text-sm opacity-60">Districts match how users think about work, not how teams are structured internally.</div>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Governance</div>
+                        <div class="text-sm opacity-60">Teams can't randomly add nav items anymore. IA is managed centrally.</div>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Multiple Paths</div>
+                        <div class="text-sm opacity-60">Nav, search, dashboards—users can find things their way, not just one prescribed path.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next -->
+        <section class="content-grid py-20">
+            <a href="/work/loading-states" class="group">
+                <div class="eyebrow mb-4 opacity-40 group-hover:opacity-100 transition">Next Project</div>
+                <div class="font-display text-3xl group-hover:italic transition">Loading States →</div>
+            </a>
+        </section>
+    </main>
+</body>
+</html>

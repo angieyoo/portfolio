@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Framework — Platform Pattern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            -webkit-font-smoothing: antialiased;
+            background: white;
+        }
+        
+        .font-display { font-family: 'Bodoni Moda', serif; }
+        .accent { color: #00a86b; }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr min(72ch, 90%) 1fr;
+            gap: 2rem;
+        }
+        .content-grid > * { grid-column: 2; }
+        .full-bleed { grid-column: 1 / -1; }
+        
+        .eyebrow {
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <nav class="border-b border-gray-200 bg-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <a href="/" class="text-xs hover:opacity-50 transition">← Back</a>
+            <div class="text-xs opacity-30">Platform Patterns · 2026</div>
+        </div>
+    </nav>
+
+    <main class="pb-24">
+        <!-- Hero -->
+        <section class="content-grid py-20">
+            <div>
+                <div class="eyebrow accent mb-6">Global Pattern · Everest Design System</div>
+                <h1 class="font-display text-6xl leading-none mb-8">Notification Framework</h1>
+                <p class="text-xl opacity-60 leading-relaxed max-w-xl">
+                    From notification chaos to a coherent system for communicating with users across severity levels and contexts
+                </p>
+            </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">The Problem</div>
+                <h2 class="font-display text-4xl mb-8">Notification overload, no coherence</h2>
+                <div class="space-y-6 text-lg leading-relaxed opacity-80">
+                    <p>
+                        Dayforce had notifications everywhere. Success messages. Error alerts. System updates. Warnings. Confirmations. Every team implemented their own, creating a cacophony of competing attention-grabbers.
+                    </p>
+                    <p>
+                        We had components—toasts, banners—but <strong>no framework</strong> for when to use what. No rules for severity. No guidance for detail level. No consistency.
+                    </p>
+                </div>
+
+                <div class="mt-12 grid md:grid-cols-2 gap-6">
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Too Many Notifications</div>
+                        <div class="text-sm opacity-60">Toasts stacking on toasts. Banners competing for space. Users missing critical alerts in the noise.</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Wrong Severity Mapping</div>
+                        <div class="text-sm opacity-60">"Employee updated" shown as error (red). Critical system failure shown as info (blue). No standards.</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Inconsistent Detail Levels</div>
+                        <div class="text-sm opacity-60">Some toasts: one word. Others: full paragraphs. No way to provide context or actions when needed.</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">No Dismissal Strategy</div>
+                        <div class="text-sm opacity-60">Some auto-dismiss. Some require click. Some never go away. Users frustrated, confused.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Overview -->
+        <section class="full-bleed bg-gray-50 py-20 mb-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-6">Solution</div>
+                    <h2 class="font-display text-4xl mb-8">A coherent notification framework</h2>
+                    <p class="text-lg opacity-80 leading-relaxed mb-12">
+                        Rather than just providing components, we built a <strong>decision framework</strong> that maps notification purpose, severity, and context to the right pattern.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg border border-gray-200 mb-12">
+                    <div class="font-display text-2xl mb-6">Two primary patterns</div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="text-sm font-medium mb-3 accent">Toast</div>
+                            <div class="text-sm opacity-80 leading-relaxed mb-4">
+                                Temporary, non-blocking feedback. Auto-dismisses after 4-6 seconds. For confirmations and low-severity updates.
+                            </div>
+                            <div class="text-xs space-y-1 opacity-60">
+                                <div>→ "Employee saved successfully"</div>
+                                <div>→ "Report exported"</div>
+                                <div>→ "Settings updated"</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium mb-3 accent">Banner</div>
+                            <div class="text-sm opacity-80 leading-relaxed mb-4">
+                                Persistent, contextual messaging. Stays visible until dismissed or resolved. For warnings, errors, and system-level updates.
+                            </div>
+                            <div class="text-xs space-y-1 opacity-60">
+                                <div>→ "System maintenance in 1 hour"</div>
+                                <div>→ "Failed to load payroll data"</div>
+                                <div>→ "Required fields missing"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Framework: Severity Mapping -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">Framework Rule 01</div>
+                <h2 class="font-display text-4xl mb-12">Severity determines pattern + style</h2>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Success -->
+                <div class="border-l-4 border-green-500 pl-8 py-6 bg-green-50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="font-display text-2xl mb-2">Success</div>
+                            <div class="text-sm opacity-60">User action completed successfully</div>
+                        </div>
+                        <div class="bg-green-600 text-white px-3 py-1 rounded text-xs font-medium">TOAST</div>
+                    </div>
+                    <div class="text-sm space-y-2">
+                        <div><strong>Color:</strong> Green (#00875A)</div>
+                        <div><strong>Icon:</strong> Checkmark</div>
+                        <div><strong>Duration:</strong> 4 seconds, auto-dismiss</div>
+                        <div><strong>Example:</strong> "Employee created successfully"</div>
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="border-l-4 border-blue-500 pl-8 py-6 bg-blue-50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="font-display text-2xl mb-2">Info</div>
+                            <div class="text-sm opacity-60">Non-critical system updates or context</div>
+                        </div>
+                        <div class="bg-blue-600 text-white px-3 py-1 rounded text-xs font-medium">BANNER</div>
+                    </div>
+                    <div class="text-sm space-y-2">
+                        <div><strong>Color:</strong> Blue (#0066CC)</div>
+                        <div><strong>Icon:</strong> Info circle</div>
+                        <div><strong>Duration:</strong> Persistent until dismissed</div>
+                        <div><strong>Example:</strong> "New feature available: Bulk timesheet approval"</div>
+                    </div>
+                </div>
+
+                <!-- Warning -->
+                <div class="border-l-4 border-yellow-500 pl-8 py-6 bg-yellow-50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="font-display text-2xl mb-2">Warning</div>
+                            <div class="text-sm opacity-60">Action needed, but not blocking</div>
+                        </div>
+                        <div class="bg-yellow-600 text-white px-3 py-1 rounded text-xs font-medium">BANNER</div>
+                    </div>
+                    <div class="text-sm space-y-2">
+                        <div><strong>Color:</strong> Yellow (#FF991F)</div>
+                        <div><strong>Icon:</strong> Warning triangle</div>
+                        <div><strong>Duration:</strong> Persistent, with action button</div>
+                        <div><strong>Example:</strong> "System maintenance scheduled for tonight at 2 AM"</div>
+                    </div>
+                </div>
+
+                <!-- Error -->
+                <div class="border-l-4 border-red-500 pl-8 py-6 bg-red-50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="font-display text-2xl mb-2">Error</div>
+                            <div class="text-sm opacity-60">Action failed or data issue</div>
+                        </div>
+                        <div class="bg-red-600 text-white px-3 py-1 rounded text-xs font-medium">BANNER</div>
+                    </div>
+                    <div class="text-sm space-y-2">
+                        <div><strong>Color:</strong> Red (#DE350B)</div>
+                        <div><strong>Icon:</strong> Error X</div>
+                        <div><strong>Duration:</strong> Persistent until resolved</div>
+                        <div><strong>Example:</strong> "Failed to save employee. Check required fields and try again."</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Framework: Detail Levels -->
+        <section class="full-bleed bg-gray-50 py-20 mb-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-6">Framework Rule 02</div>
+                    <h2 class="font-display text-4xl mb-12">Detail levels match user needs</h2>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="font-display text-xl mb-4">Simple Toast</div>
+                        <div class="text-sm opacity-80 leading-relaxed mb-4">
+                            Title only. For straightforward confirmations where no additional context needed.
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs">✓</div>
+                                <div class="text-sm font-medium">Employee saved</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="font-display text-xl mb-4">Banner with Description</div>
+                        <div class="text-sm opacity-80 leading-relaxed mb-4">
+                            Title + supporting detail. For warnings or errors where users need more context.
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded border-l-4 border-yellow-500">
+                            <div class="flex gap-3">
+                                <div class="text-yellow-600 text-lg">⚠</div>
+                                <div>
+                                    <div class="text-sm font-medium mb-1">System maintenance tonight</div>
+                                    <div class="text-xs opacity-70">Dayforce will be unavailable from 2:00 AM to 4:00 AM EST for scheduled maintenance.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="font-display text-xl mb-4">Banner with Action</div>
+                        <div class="text-sm opacity-80 leading-relaxed mb-4">
+                            Title + description + action button. For errors where users can resolve immediately.
+                        </div>
+                        <div class="bg-red-50 p-4 rounded border-l-4 border-red-500">
+                            <div class="flex justify-between items-start gap-3">
+                                <div class="flex gap-3">
+                                    <div class="text-red-600 text-lg">✕</div>
+                                    <div>
+                                        <div class="text-sm font-medium mb-1">Failed to load payroll data</div>
+                                        <div class="text-xs opacity-70">Connection timeout. Your internet connection may be unstable.</div>
+                                    </div>
+                                </div>
+                                <button class="bg-red-600 text-white px-3 py-1 rounded text-xs hover:bg-red-700">Retry</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Framework: Placement Rules -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">Framework Rule 03</div>
+                <h2 class="font-display text-4xl mb-12">Placement matches scope</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="font-display text-xl mb-4">Toast: Top-right</div>
+                    <div class="text-sm opacity-80 leading-relaxed mb-4">
+                        Global position. Visible but non-blocking. Stacks vertically (max 3 visible).
+                    </div>
+                    <div class="text-xs opacity-60">
+                        → Confirmations<br/>
+                        → Success messages<br/>
+                        → Non-critical updates
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="font-display text-xl mb-4">Banner: Contextual</div>
+                    <div class="text-sm opacity-80 leading-relaxed mb-4">
+                        Placed above affected content. Page-level or section-level. Pushes content down.
+                    </div>
+                    <div class="text-xs opacity-60">
+                        → System-level: Top of page<br/>
+                        → Form errors: Above form<br/>
+                        → Section warnings: Above section
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Decision Tree -->
+        <section class="full-bleed bg-black text-white py-20 mb-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-6" style="color: #00a86b;">Decision Framework</div>
+                    <h2 class="font-display text-4xl mb-12">How teams choose the right pattern</h2>
+                </div>
+
+                <div class="space-y-6 text-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="text-2xl">1️⃣</div>
+                        <div>
+                            <div class="font-medium mb-2">Is this confirming a user action?</div>
+                            <div class="opacity-60">→ Yes: Toast (success)</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="text-2xl">2️⃣</div>
+                        <div>
+                            <div class="font-medium mb-2">Is this blocking the user from continuing?</div>
+                            <div class="opacity-60">→ Yes: Banner (error or warning)</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="text-2xl">3️⃣</div>
+                        <div>
+                            <div class="font-medium mb-2">Does the user need to take action?</div>
+                            <div class="opacity-60">→ Yes: Banner with action button<br/>→ No: Toast or banner (depends on severity)</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="text-2xl">4️⃣</div>
+                        <div>
+                            <div class="font-medium mb-2">Is this system-wide or contextual?</div>
+                            <div class="opacity-60">→ System: Banner at page top<br/>→ Contextual: Banner above affected area</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">Impact</div>
+                <h2 class="font-display text-4xl mb-12">From chaos to coherence</h2>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div>
+                        <div class="text-5xl font-display mb-3">85%</div>
+                        <div class="text-sm opacity-60">Reduction in notification-related support tickets</div>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-display mb-3">32</div>
+                        <div class="text-sm opacity-60">Teams using framework</div>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-display mb-3">4</div>
+                        <div class="text-sm opacity-60">Clear patterns instead of ad-hoc solutions</div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="border-l-2 border-green-500 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Consistency</div>
+                        <div class="text-sm opacity-60">Users learned notification patterns once. Severity always maps to same color/style.</div>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Clarity</div>
+                        <div class="text-sm opacity-60">Decision framework makes it obvious which pattern to use. No more guessing.</div>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Reduced Noise</div>
+                        <div class="text-sm opacity-60">Proper severity mapping means fewer unnecessary alerts. Users see what matters.</div>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Accessibility</div>
+                        <div class="text-sm opacity-60">ARIA live regions, proper focus management, keyboard dismissal all built-in.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next -->
+        <section class="content-grid py-20">
+            <a href="/work/wayfinding" class="group">
+                <div class="eyebrow mb-4 opacity-40 group-hover:opacity-100 transition">Next Project</div>
+                <div class="font-display text-3xl group-hover:italic transition">Wayfinding →</div>
+            </a>
+        </section>
+    </main>
+</body>
+</html>

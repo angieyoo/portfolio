@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record List Template — Platform Pattern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            -webkit-font-smoothing: antialiased;
+            background: white;
+        }
+        
+        .font-display { font-family: 'Bodoni Moda', serif; }
+        .accent { color: #00a86b; }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr min(72ch, 90%) 1fr;
+            gap: 2rem;
+        }
+        .content-grid > * { grid-column: 2; }
+        .full-bleed { grid-column: 1 / -1; }
+        
+        .eyebrow {
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+            opacity: 0.5;
+        }
+
+        /* Slider */
+        #slider-container {
+            position: relative;
+            aspect-ratio: 16/9;
+            cursor: ew-resize;
+            user-select: none;
+        }
+        #after-wrapper {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        #slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            pointer-events: none;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #slider-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        }
+        #slider-handle::after {
+            content: '⟷';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="border-b border-gray-200 bg-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <a href="/" class="text-xs hover:opacity-50 transition">← Back</a>
+            <div class="text-xs opacity-30">Platform Patterns · 2025-26</div>
+        </div>
+    </nav>
+
+    <main class="pb-24">
+        <!-- Hero -->
+        <section class="content-grid py-20">
+            <div>
+                <div class="eyebrow accent mb-6">Global Pattern · Everest Design System</div>
+                <h1 class="font-display text-6xl leading-none mb-8">Record List Template</h1>
+                <p class="text-xl opacity-60 leading-relaxed max-w-xl">
+                    Standardizing CRUD workflows across 32 product teams—one template, two experiences
+                </p>
+            </div>
+        </section>
+
+        <!-- The Problem -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">The Problem</div>
+                <h2 class="font-display text-4xl mb-8">Every team building their own CRUD</h2>
+                <div class="space-y-6 text-lg leading-relaxed opacity-80">
+                    <p>
+                        Dayforce is built around <strong>lists of records</strong>. Employee lists. Payroll entries. Time cards. Benefits enrollments. Every product area needed to Create, Read, Update, and Delete records.
+                    </p>
+                    <p>
+                        But each of the 32 teams had built their own patterns:
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-12">
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Recruiting Team</div>
+                        <div class="text-sm opacity-60">Edit in modal dialogs</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Payroll Team</div>
+                        <div class="text-sm opacity-60">Inline editing in cells</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Time & Attendance</div>
+                        <div class="text-sm opacity-60">Separate edit pages</div>
+                    </div>
+                    <div class="border-l-2 border-red-400 pl-6 py-3">
+                        <div class="text-sm font-medium mb-1">Benefits Team</div>
+                        <div class="text-sm opacity-60">Side panel drawers</div>
+                    </div>
+                </div>
+
+                <div class="mt-12 p-6 bg-red-50 rounded border-l-4 border-red-400">
+                    <div class="text-sm font-medium mb-2">The Cost</div>
+                    <div class="text-sm opacity-80 leading-relaxed">
+                        Users had to relearn CRUD patterns in every product. Developers rebuilt the same flows. Designers maintained 32 different patterns. Accessibility gaps everywhere.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Overview -->
+        <section class="full-bleed bg-gray-50 py-20 mb-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-6">Solution</div>
+                    <h2 class="font-display text-4xl mb-8">One template, two experiences</h2>
+                    <p class="text-lg opacity-80 leading-relaxed mb-12">
+                        Instead of prescribing a single CRUD pattern, we recognized two distinct user archetypes and built the Record List Template to serve both.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="text-sm font-medium mb-3 accent">Employee Experience</div>
+                        <div class="font-display text-2xl mb-4">Side Panel Editing</div>
+                        <div class="text-sm opacity-60 leading-relaxed mb-6">
+                            For occasional users who need focus and clarity. View and edit one record at a time.
+                        </div>
+                        <div class="text-xs space-y-2 opacity-60">
+                            <div>→ Click row to open side panel</div>
+                            <div>→ Form-based editing experience</div>
+                            <div>→ Clear labels, validation, guidance</div>
+                            <div>→ Save/Discard actions</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="text-sm font-medium mb-3 accent">Admin Experience</div>
+                        <div class="font-display text-2xl mb-4">Inline Editing</div>
+                        <div class="text-sm opacity-60 leading-relaxed mb-6">
+                            For power users who need speed and efficiency. Edit multiple records without context switching.
+                        </div>
+                        <div class="text-xs space-y-2 opacity-60">
+                            <div>→ Click cell to edit in place</div>
+                            <div>→ Tab through fields quickly</div>
+                            <div>→ Bulk actions and selection</div>
+                            <div>→ Row action menus</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Comparison -->
+        <section class="full-bleed px-8 mb-20">
+            <div class="max-w-6xl mx-auto">
+                <div class="eyebrow mb-8 text-center">Visual Comparison</div>
+                <div id="slider-container" class="bg-white rounded overflow-hidden shadow-lg">
+                    <!-- Employee (Side Panel) -->
+                    <div class="absolute inset-0 bg-white">
+                        <img src="/mnt/user-data/uploads/Screenshot_2026-02-15_at_4_01_23_PM.png" 
+                             alt="Employee - Side Panel" 
+                             class="w-full h-full object-cover"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden absolute inset-0 items-center justify-center p-8" style="display: flex;">
+                            <div class="text-center max-w-md">
+                                <div class="text-xs uppercase tracking-wider mb-3 opacity-40">Employee Version</div>
+                                <div class="text-lg opacity-60 leading-relaxed">
+                                    Side panel slides in. Form-based editing. Clear save/discard actions. Focused experience for occasional users.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin (Inline) -->
+                    <div id="after-wrapper">
+                        <div class="absolute inset-0 bg-white">
+                            <img src="/mnt/user-data/uploads/Screenshot_2026-02-15_at_3_56_48_PM.png" 
+                                 alt="Admin - Inline Editing" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="hidden absolute inset-0 items-center justify-center p-8" style="display: flex;">
+                                <div class="text-center max-w-md">
+                                    <div class="text-xs uppercase tracking-wider mb-3 accent">Admin Version</div>
+                                    <div class="text-lg opacity-60 leading-relaxed">
+                                        Click to edit cells. Tab through fields. Row actions. Bulk operations. Speed-optimized for power users.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="slider-handle"></div>
+                </div>
+                <p class="text-center text-xs opacity-30 mt-4">← Employee (Side Panel) | Admin (Inline) →</p>
+            </div>
+        </section>
+
+        <!-- CRUD Standardization -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">CRUD Standardization</div>
+                <h2 class="font-display text-4xl mb-12">One pattern for all four operations</h2>
+            </div>
+
+            <!-- Create -->
+            <div class="py-8 border-t border-gray-200">
+                <div class="grid md:grid-cols-12 gap-8">
+                    <div class="md:col-span-3">
+                        <div class="font-display text-2xl">Create</div>
+                    </div>
+                    <div class="md:col-span-9">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-6 rounded">
+                                <div class="text-xs mb-3 opacity-50">EMPLOYEE</div>
+                                <div class="text-sm leading-relaxed">
+                                    "+ Add" button → Empty side panel opens → Fill form → Save
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded">
+                                <div class="text-xs mb-3 opacity-50">ADMIN</div>
+                                <div class="text-sm leading-relaxed">
+                                    "+ Add" button → New row appears in table → Fill cells inline → Auto-save on blur
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Read -->
+            <div class="py-8 border-t border-gray-200">
+                <div class="grid md:grid-cols-12 gap-8">
+                    <div class="md:col-span-3">
+                        <div class="font-display text-2xl">Read</div>
+                    </div>
+                    <div class="md:col-span-9">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-6 rounded">
+                                <div class="text-xs mb-3 opacity-50">EMPLOYEE</div>
+                                <div class="text-sm leading-relaxed">
+                                    Click row → Side panel shows all fields → Read-only labels + values
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded">
+                                <div class="text-xs mb-3 opacity-50">ADMIN</div>
+                                <div class="text-sm leading-relaxed">
+                                    Scan table directly → All key info visible → No need to open details
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Update -->
+            <div class="py-8 border-t border-gray-200">
+                <div class="grid md:grid-cols-12 gap-8">
+                    <div class="md:col-span-3">
+                        <div class="font-display text-2xl">Update</div>
+                    </div>
+                    <div class="md:col-span-9">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-6 rounded">
+                                <div class="text-xs mb-3 opacity-50">EMPLOYEE</div>
+                                <div class="text-sm leading-relaxed">
+                                    Click row → Side panel → "Edit" mode → Change fields → Save/Discard
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded">
+                                <div class="text-xs mb-3 opacity-50">ADMIN</div>
+                                <div class="text-sm leading-relaxed">
+                                    Click any cell → Edit in place → Tab to next → Auto-save → Keep moving
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delete -->
+            <div class="py-8 border-t border-gray-200">
+                <div class="grid md:grid-cols-12 gap-8">
+                    <div class="md:col-span-3">
+                        <div class="font-display text-2xl">Delete</div>
+                    </div>
+                    <div class="md:col-span-9">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-6 rounded">
+                                <div class="text-xs mb-3 opacity-50">EMPLOYEE</div>
+                                <div class="text-sm leading-relaxed">
+                                    Open side panel → "Delete" button at bottom → Confirmation modal → Confirm
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded">
+                                <div class="text-xs mb-3 opacity-50">ADMIN</div>
+                                <div class="text-sm leading-relaxed">
+                                    Row action menu (•••) → "Delete" → Confirmation modal → Or bulk delete with checkboxes
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Decisions -->
+        <section class="full-bleed bg-gray-50 py-20 mb-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-6">Design Decisions</div>
+                    <h2 class="font-display text-4xl mb-12">Why two patterns instead of one?</h2>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="font-display text-xl mb-4">We tried forcing one pattern</div>
+                        <p class="text-sm opacity-80 leading-relaxed mb-4">
+                            Initial approach: "Everyone uses inline editing." Admin teams loved it. Employee-facing teams struggled—their users felt overwhelmed by too many editable fields, made accidental changes, couldn't find save buttons.
+                        </p>
+                        <div class="text-xs opacity-60">→ Realized: Different users need different experiences</div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="font-display text-xl mb-4">User archetypes emerged</div>
+                        <div class="grid md:grid-cols-2 gap-6 text-sm">
+                            <div>
+                                <div class="font-medium mb-2">Power Users (Admins)</div>
+                                <ul class="space-y-1 opacity-60 text-xs">
+                                    <li>→ Edit 50+ records per day</li>
+                                    <li>→ Know the data model cold</li>
+                                    <li>→ Want speed, not guidance</li>
+                                    <li>→ Need bulk operations</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="font-medium mb-2">Occasional Users (Employees)</div>
+                                <ul class="space-y-1 opacity-60 text-xs">
+                                    <li>→ Edit 1-2 records per week</li>
+                                    <li>→ Need field labels and help text</li>
+                                    <li>→ Want clear save/cancel actions</li>
+                                    <li>→ Prefer focused experience</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div class="font-display text-xl mb-4">Side panel vs. inline trade-offs</div>
+                        <div class="text-sm opacity-80 leading-relaxed space-y-3">
+                            <p><strong>Side panel wins:</strong> Focused attention, clear form structure, explicit save/discard, better for complex validation, less intimidating</p>
+                            <p><strong>Inline wins:</strong> Faster for bulk edits, no context switching, scan while editing, keyboard-friendly for power users</p>
+                            <p class="pt-3 border-t border-gray-200"><strong>Decision:</strong> Offer both. Let teams choose based on their users.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Template Features -->
+        <section class="content-grid mb-20">
+            <div>
+                <div class="eyebrow mb-6">Template Features</div>
+                <h2 class="font-display text-4xl mb-12">What's included in Record List</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border-l-2 border-green-500 pl-6 py-3">
+                    <div class="font-medium mb-2">Data Table</div>
+                    <div class="text-sm opacity-60">Sortable columns, selection, pagination, keyboard nav</div>
+                </div>
+                <div class="border-l-2 border-green-500 pl-6 py-3">
+                    <div class="font-medium mb-2">Filtering</div>
+                    <div class="text-sm opacity-60">Quick filters, search, advanced filter builder</div>
+                </div>
+                <div class="border-l-2 border-green-500 pl-6 py-3">
+                    <div class="font-medium mb-2">Density Controls</div>
+                    <div class="text-sm opacity-60">Compact/Comfortable/Spacious row heights</div>
+                </div>
+                <div class="border-l-2 border-green-500 pl-6 py-3">
+                    <div class="font-medium mb-2">Bulk Actions</div>
+                    <div class="text-sm opacity-60">Multi-select, bulk edit, bulk delete</div>
+                </div>
+                <div class="border-l-2 border-green-500 pl-6 py-3">
+                    <div class="font-medium mb-2">Empty States</div>
+                    <div class="text-sm opacity-60">No data, no results, error states</div>
+                </div>
+                <div class="border-l-2 border-green-500 pl-6 py-3">
+                    <div class="font-medium mb-2">Loading States</div>
+                    <div class="text-sm opacity-60">Skeleton rows, inline spinners, optimistic updates</div>
+                </div>
+                <div class="border-l-2 border-green-500 pl-6 py-3">
+                    <div class="font-medium mb-2">Validation</div>
+                    <div class="text-sm opacity-60">Inline error messages, field-level validation</div>
+                </div>
+                <div class="border-l-2 border-green-500 pl-6 py-3">
+                    <div class="font-medium mb-2">Accessibility</div>
+                    <div class="text-sm opacity-60">WCAG AA, keyboard nav, screen reader support</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact -->
+        <section class="full-bleed bg-black text-white py-20">
+            <div class="content-grid">
+                <div>
+                    <div class="eyebrow mb-8" style="color: #00a86b;">Impact</div>
+                    <h2 class="font-display text-4xl mb-16">Platform-wide standardization</h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-12 mb-16">
+                        <div>
+                            <div class="text-5xl font-display mb-3">80%</div>
+                            <div class="text-sm opacity-60">Product surfaces using template</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-display mb-3">32</div>
+                            <div class="text-sm opacity-60">Teams standardized on pattern</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-display mb-3">27.6K+</div>
+                            <div class="text-sm opacity-60">Weekly component insertions</div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 mb-16">
+                        <div class="border-l-2 pl-6" style="border-color: #00a86b;">
+                            <div class="text-sm mb-2 opacity-60">Consistency</div>
+                            <div class="opacity-90">Users learned CRUD once, applied everywhere. No more relearning patterns per product.</div>
+                        </div>
+                        <div class="border-l-2 pl-6" style="border-color: #00a86b;">
+                            <div class="text-sm mb-2 opacity-60">Efficiency</div>
+                            <div class="opacity-90">Teams ship CRUD in days, not weeks. No rebuilding flows from scratch.</div>
+                        </div>
+                        <div class="border-l-2 pl-6" style="border-color: #00a86b;">
+                            <div class="text-sm mb-2 opacity-60">Accessibility</div>
+                            <div class="opacity-90">Zero CRUD accessibility bugs. Pattern includes WCAG AA by default.</div>
+                        </div>
+                        <div class="border-l-2 pl-6" style="border-color: #00a86b;">
+                            <div class="text-sm mb-2 opacity-60">Flexibility</div>
+                            <div class="opacity-90">Two patterns serve two user types. Teams choose what fits their users.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/5 p-8 rounded">
+                        <div class="text-sm opacity-60 mb-4">What teams say</div>
+                        <div class="text-lg leading-relaxed opacity-90 italic mb-6">
+                            "We were dreading building another CRUD interface. Record List gave us everything we needed in a day. Side panel was perfect for our users."
+                        </div>
+                        <div class="text-sm opacity-40">— Product Designer, Benefits Team</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next -->
+        <section class="content-grid py-20">
+            <a href="/work/notification-framework" class="group">
+                <div class="eyebrow mb-4 opacity-40 group-hover:opacity-100 transition">Next Project</div>
+                <div class="font-display text-3xl group-hover:italic transition">Notification Framework →</div>
+            </a>
+        </section>
+    </main>
+
+    <script>
+        const container = document.getElementById('slider-container');
+        const afterWrapper = document.getElementById('after-wrapper');
+        const handle = document.getElementById('slider-handle');
+        let isDragging = false;
+
+        function updateSlider(clientX) {
+            const rect = container.getBoundingClientRect();
+            const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+            const percent = (x / rect.width) * 100;
+            
+            afterWrapper.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+            handle.style.left = `${percent}%`;
+        }
+
+        container.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            updateSlider(e.clientX);
+        });
+        document.addEventListener('mouseup', () => { isDragging = false; });
+        container.addEventListener('mousemove', (e) => {
+            if (isDragging) updateSlider(e.clientX);
+        });
+        container.addEventListener('touchmove', (e) => {
+            updateSlider(e.touches[0].clientX);
+        });
+    </script>
+</body>
+</html>
