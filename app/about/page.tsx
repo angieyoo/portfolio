@@ -51,7 +51,7 @@ export default function About() {
     }, 
     {
       period: "2008 — 2019",
-      company: "Various Verticals",
+      company: "Shopify, TD Bank, Startups, etc",
       position: "Product Design IC & Manager",
       description: [
         "Led product design across startup and enterprise environments, shipping in both fast-moving and heavily regulated contexts",
@@ -116,7 +116,7 @@ export default function About() {
               Angie Yoo
             </h1>
             <p className="text-2xl md:text-3xl font-display italic text-muted mb-8">
-              Principal Product Designer · Platform Systems & Architecture
+              Platform Systems & Architecture
             </p>
             <p className="text-lg leading-relaxed max-w-3xl">
               <strong>Platform designer specializing in system-level problems that scale across products.</strong> 7 years building design systems that standardize cross-product experiences, define navigation architecture, and establish foundational patterns (tables, notifications, search) used by <strong>30+ teams serving millions of users</strong>.
