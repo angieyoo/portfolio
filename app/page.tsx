@@ -32,6 +32,13 @@ export default function Home() {
       slug: "work/notification-framework"
     },
     {
+      year: "2026",
+      title: "AI Chat Patterns",
+      discipline: "Platform Patterns",
+      tags: ["AI", "Chat", "Systems Thinking"],
+      slug: "work/ai-chat"
+    },
+    {
       year: "2025-6",
       title: "Data Tables",
       discipline: "Platform Patterns",
@@ -39,14 +46,14 @@ export default function Home() {
       slug: "work/data-tables"
     },
     {
-      year: "2024",
+      year: "2025",
       title: "Wayfinding",
       discipline: "Navigation Architecture",
       tags: ["IA", "Research"],
       slug: "work/wayfinding"
     },
     {
-      year: "2024",
+      year: "2025",
       title: "Loading States",
       discipline: "Interaction Patterns",
       tags: ["UX Patterns", "Performance"],
@@ -127,33 +134,136 @@ export default function Home() {
             </h1>
             <br/> 
             <p className="text-xl md:text-2xl font-display leading-relaxed mb-8">
-                Principal-level product designer specializing in thoughtful systems & platform. </p>
+              Principal-level product designer crafting thoughtful systems that scale. 
+            </p>
+            <p className="text-lg md:text-xl font-body text-muted leading-relaxed max-w-3xl">
+              I design the invisible infrastructure that makes complex products feel intuitive—from design systems to data architectures.
+            </p>
           </motion.div>
 
-         {/* <motion.button
-            className="mt-32 px-8 py-4 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-primary transition-all duration-300"
+          {/* Expertise Areas */}
+          <motion.div
+            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
+            {[
+              { title: "Design Systems", desc: "Component libraries & patterns" },
+              { title: "Platform Design", desc: "Scalable product foundations" },
+              { title: "Interaction Design", desc: "Micro-interactions & flows" }
+            ].map((expertise, index) => (
+              <motion.div
+                key={expertise.title}
+                className="group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 + index * 0.1, duration: 0.6 }}
+              >
+                <div className="h-1 w-12 bg-accent mb-3 group-hover:w-16 transition-all duration-300"></div>
+                <h3 className="text-sm font-body font-semibold tracking-wider mb-1">{expertise.title}</h3>
+                <p className="text-xs font-body text-muted leading-relaxed">{expertise.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            className="mt-16 flex flex-wrap gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            whileHover={{ scale: 1.05 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
           >
-            INITIALIZE
-          </motion.button>*/}
+            <motion.a
+              href="#works"
+              className="px-8 py-4 bg-text text-primary rounded-full font-body text-sm tracking-wider hover:bg-text/90 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              VIEW PROJECTS
+            </motion.a>
+            <motion.a
+              href="/Angie_Yoo_Resume.pdf"
+              target="_blank"
+              className="px-8 py-4 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-primary transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              DOWNLOAD RESUME
+            </motion.a>
+            <motion.a
+              href="mailto:hello@angieyoo.com"
+              className="px-8 py-4 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-primary transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              GET IN TOUCH
+            </motion.a>
+          </motion.div>
         </div>
 
         {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-center"
+        <motion.a
+          href="#works"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-center cursor-pointer group"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
+          animate={{ opacity: scrollY > 100 ? 0 : 1 }}
+          transition={{ delay: scrollY > 0 ? 0 : 1.5, duration: 0.8 }}
+          whileHover={{ y: 5 }}
+          style={{ pointerEvents: scrollY > 100 ? 'none' : 'auto' }}
         >
-          <div className="text-xs font-body text-muted mb-2 tracking-wider">SCROLL</div>
-          <div className="w-px h-12 bg-muted mx-auto"></div>
-        </motion.div>
-      </section>
+          <motion.div 
+            className="text-xs font-body text-muted mb-2 tracking-wider group-hover:text-text transition-colors"
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            SCROLL
+          </motion.div>
+          <motion.div 
+            className="w-px h-12 bg-muted mx-auto group-hover:bg-text transition-colors"
+            animate={{ scaleY: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="mt-2 flex flex-col items-center gap-1"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            {/* Option 1: Mouse icon (uncomment to use) */}
+            {/* <svg width="20" height="32" viewBox="0 0 20 32" className="text-muted group-hover:text-text transition-colors">
+              <rect x="1" y="1" width="18" height="28" rx="9" fill="none" stroke="currentColor" strokeWidth="2"/>
+              <motion.circle 
+                cx="10" 
+                cy="10" 
+                r="2" 
+                fill="currentColor"
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </svg> */}
 
-    
+            {/* Option 2: Three animated dots (uncomment to use) */}
+            {/* <div className="flex gap-1">
+              {[0, 0.2, 0.4].map((delay, i) => (
+                <motion.div
+                  key={i}
+                  className="w-1.5 h-1.5 rounded-full bg-muted group-hover:bg-text"
+                  animate={{ opacity: [0.3, 1, 0.3] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay }}
+                />
+              ))}
+            </div> */}
+
+            {/* Option 3: Chevron (current - comment out if using another) */}
+            <svg width="16" height="10" viewBox="0 0 16 10" className="text-muted group-hover:text-text transition-colors" fill="none">
+              <path d="M1 1L8 8L15 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+
+            {/* Option 4: Simple text (uncomment to use) */}
+            {/* <span className="text-xs text-muted group-hover:text-text transition-colors">↓</span> */}
+          </motion.div>
+        </motion.a>
+      </section>
 
      
      
@@ -170,7 +280,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-5xl italic mb-4">The Patterns Gallery</h2>
-            <p className="text-sm font-body text-muted tracking-wider">SELECTED WORKS 2026—2022</p>
+            <p className="text-sm font-body text-muted tracking-wider">SELECTED WORKS</p>
           </motion.div>
 
           <div className="space-y-1 border-t border-text/10">
@@ -194,7 +304,7 @@ export default function Home() {
                     </div>
                     
                     <div className="md:col-span-6">
-                      <h3 className="font-display text-4xl md:text-5xl font-normal group-hover:italic transition-all duration-300">
+                      <h3 className="font-display text-4xl md:text-5xl font-normal transition-all duration-300">
                         {project.title}
                       </h3>
                     </div>
