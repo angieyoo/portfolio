@@ -33,10 +33,10 @@ export default function Home() {
     },
     {
       year: "2025-6",
-      title: "Record List Template",
+      title: "Data Tables",
       discipline: "Platform Patterns",
       tags: ["CRUD", "Templates", "Systems Thinking"],
-      slug: "work-record-list.html"
+      slug: "work/data-tables"
     },
     {
       year: "2024",
