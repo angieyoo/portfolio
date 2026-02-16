@@ -6,7 +6,9 @@ const bodoni = Bodoni_Moda({
   subsets: ['latin'],
   variable: '--font-display',
   weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic']
+  style: ['normal', 'italic'],
+  display: 'swap',
+  adjustFontFallback: false,
 })
 
 const mono = IBM_Plex_Mono({ 
