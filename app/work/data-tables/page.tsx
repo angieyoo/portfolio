@@ -1,10 +1,10 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { useState, useRef } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
-export default function DataTables() {
+export default function RecordListTemplate() {
   const [sliderPosition, setSliderPosition] = useState(50)
   const [isDragging, setIsDragging] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -17,14 +17,9 @@ export default function DataTables() {
     setSliderPosition(percent)
   }
 
-  const handleMouseDown = () => {
-    setIsDragging(true)
-  }
-
-  const handleMouseUp = () => {
-    setIsDragging(false)
-  }
-
+  const handleMouseDown = () => setIsDragging(true)
+  const handleMouseUp = () => setIsDragging(false)
+  
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging) return
     updatePosition(e.clientX)
@@ -39,294 +34,190 @@ export default function DataTables() {
   }
 
   return (
-    <main className="min-h-screen bg-white text-text">
+    <main className="min-h-screen bg-white">
       {/* Navigation */}
-      <motion.nav 
-        className="fixed top-0 left-0 right-0 z-50 px-8 py-6 bg-white/80 backdrop-blur-sm border-b border-text/5"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3 hover:opacity-70 transition-opacity">
-            <span className="text-sm font-body tracking-wider text-text">← BACK</span>
-          </Link>
-          <div className="flex items-center gap-3">
-            <span className="text-sm font-body tracking-wider text-text">DATA TABLES</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-accent"></span>
-            <span className="text-sm font-body tracking-wider text-text">2025-6</span>
-          </div>
+      <nav className="border-b border-gray-200 sticky top-0 bg-white z-50">
+        <div className="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+          <Link href="/" className="text-xs hover:opacity-50 transition font-mono">← Back</Link>
+          <div className="text-xs opacity-30 font-mono">Platform Patterns · 2025-26</div>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-8">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-sm font-body text-accent tracking-wider mb-6">PLATFORM PATTERNS</p>
-            <h1 className="font-display text-6xl md:text-8xl mb-8 leading-tight">
-              Data Tables
-            </h1>
-            <p className="text-xl md:text-2xl font-display text-muted max-w-3xl">
-              Designing platform-wide Table component establishing consistent patterns for data-dense interfaces across 80% of product surfaces
+      <div className="max-w-5xl mx-auto px-8">
+        {/* Hero */}
+        <section className="py-20">
+          <div className="text-[10px] tracking-widest uppercase font-mono text-accent mb-6">Global Pattern · Everest Design System</div>
+          <h1 className="font-display text-6xl leading-none mb-8">Record List Template</h1>
+          <p className="text-xl opacity-60 leading-relaxed max-w-xl font-display">
+            Standardizing CRUD workflows across 32 product teams—one template, two experiences
+          </p>
+        </section>
+
+        {/* Problem */}
+        <section className="py-20 border-t border-gray-200">
+          <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">The Problem</div>
+          <h2 className="font-display text-4xl mb-8">Every team building their own CRUD</h2>
+          <div className="space-y-6 text-lg leading-relaxed opacity-80">
+            <p>
+              Dayforce is built around <strong>lists of records</strong>. Employee lists. Payroll entries. Time cards. Benefits enrollments. Every product area needed to Create, Read, Update, and Delete records.
             </p>
-          </motion.div>
+            <p>
+              But each of the 32 teams had built their own patterns.
+            </p>
+          </div>
 
-          <motion.div 
-            className="grid md:grid-cols-3 gap-12 mt-16 pt-16 border-t border-text/10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            <div>
-              <h3 className="text-sm font-body tracking-wider text-muted mb-3">ROLE</h3>
-              <p className="font-display text-lg">Lead Product Designer</p>
+          <div className="grid md:grid-cols-2 gap-4 mt-12">
+            <div className="border-l-2 border-red-400 pl-6 py-3">
+              <div className="text-sm font-medium mb-1">Recruiting Team</div>
+              <div className="text-sm opacity-60">Edit in modal dialogs</div>
             </div>
-            <div>
-              <h3 className="text-sm font-body tracking-wider text-muted mb-3">TIMELINE</h3>
-              <p className="font-display text-lg">2025 — 2026</p>
+            <div className="border-l-2 border-red-400 pl-6 py-3">
+              <div className="text-sm font-medium mb-1">Payroll Team</div>
+              <div className="text-sm opacity-60">Inline editing in cells</div>
             </div>
-            <div>
-              <h3 className="text-sm font-body tracking-wider text-muted mb-3">IMPACT</h3>
-              <p className="font-display text-lg">80% product adoption</p>
+            <div className="border-l-2 border-red-400 pl-6 py-3">
+              <div className="text-sm font-medium mb-1">Time & Attendance</div>
+              <div className="text-sm opacity-60">Separate edit pages</div>
             </div>
-          </motion.div>
-        </div>
-      </section>
+            <div className="border-l-2 border-red-400 pl-6 py-3">
+              <div className="text-sm font-medium mb-1">Benefits Team</div>
+              <div className="text-sm opacity-60">Side panel drawers</div>
+            </div>
+          </div>
+        </section>
 
-      {/* Context */}
-      <section className="py-20 px-8 border-t border-text/10">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-4xl italic mb-12">Context</h2>
-            <div className="grid md:grid-cols-12 gap-12">
-              <div className="md:col-span-8">
-                <p className="text-lg leading-relaxed mb-6">
-                  Dayforce's enterprise HCM platform serves millions of users managing complex, data-dense workflows. Tables are the primary interface for most critical tasks—from payroll processing to workforce scheduling.
-                </p>
-                <p className="text-lg leading-relaxed text-muted">
-                  However, each product area had built their own table implementations, leading to inconsistent behaviors, accessibility gaps, and duplicated engineering effort.
-                </p>
+        {/* Solution */}
+        <section className="py-20 border-t border-gray-200 bg-gray-50 -mx-8 px-8">
+          <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Solution</div>
+          <h2 className="font-display text-4xl mb-8">One template, two experiences</h2>
+          <p className="text-lg opacity-80 leading-relaxed mb-12">
+            Instead of prescribing a single CRUD pattern, we recognized two distinct user archetypes and built the Record List Template to serve both.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-lg border border-gray-200">
+              <div className="text-sm font-medium mb-3 text-accent font-mono">Employee Experience</div>
+              <div className="font-display text-2xl mb-4">Side Panel Editing</div>
+              <div className="text-sm opacity-60 leading-relaxed mb-6">
+                For occasional users who need focus and clarity. View and edit one record at a time.
+              </div>
+              <div className="text-xs space-y-2 opacity-60 font-mono">
+                <div>→ Click row to open side panel</div>
+                <div>→ Form-based editing experience</div>
+                <div>→ Clear labels, validation, guidance</div>
+                <div>→ Save/Discard actions</div>
               </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Challenge */}
-      <section className="py-20 px-8 border-t border-text/10 bg-white/30">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-4xl italic mb-12">Challenge</h2>
-            <div className="space-y-8">
-              <div className="p-6 border-l-2 border-accent">
-                <h3 className="font-display text-xl mb-3">Fragmented Patterns</h3>
-                <p className="text-muted leading-relaxed">
-                  32 product teams had built their own table solutions with varying interaction models, keyboard navigation, and accessibility support
-                </p>
+            <div className="bg-white p-8 rounded-lg border border-gray-200">
+              <div className="text-sm font-medium mb-3 text-accent font-mono">Admin Experience</div>
+              <div className="font-display text-2xl mb-4">Inline Editing</div>
+              <div className="text-sm opacity-60 leading-relaxed mb-6">
+                For power users who need speed and efficiency. Edit multiple records without context switching.
               </div>
-              <div className="p-6 border-l-2 border-accent">
-                <h3 className="font-display text-xl mb-3">Complex Requirements</h3>
-                <p className="text-muted leading-relaxed">
-                  Tables needed to support sorting, filtering, inline editing, bulk actions, responsive behavior, and advanced accessibility—all while feeling lightweight
-                </p>
-              </div>
-              <div className="p-6 border-l-2 border-accent">
-                <h3 className="font-display text-xl mb-3">Enterprise Scale</h3>
-                <p className="text-muted leading-relaxed">
-                  Solution had to work across vastly different use cases: from 10-row employee lists to 10,000-row payroll datasets
-                </p>
+              <div className="text-xs space-y-2 opacity-60 font-mono">
+                <div>→ Click cell to edit in place</div>
+                <div>→ Tab through fields quickly</div>
+                <div>→ Bulk actions and selection</div>
+                <div>→ Row action menus</div>
               </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* Solution */}
-      <section className="py-20 px-8 border-t border-text/10">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+        {/* Visual Comparison */}
+        <section className="py-20">
+          <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-8 text-center">Visual Comparison</div>
+          <div 
+            ref={containerRef}
+            className="relative aspect-video bg-white rounded overflow-hidden shadow-lg cursor-ew-resize select-none"
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseUp}
+            onTouchMove={handleTouchMove}
+            onClick={handleClick}
           >
-            <h2 className="font-display text-4xl italic mb-12">Approach</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="font-display text-2xl mb-4">Token-Driven Foundation</h3>
-                <p className="text-muted leading-relaxed mb-6">
-                  Built Table 2.1 on top of Everest design system's token architecture, ensuring visual consistency and enabling themes to propagate automatically
-                </p>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl mb-4">Accessible by Default</h3>
-                <p className="text-muted leading-relaxed mb-6">
-                  Implemented ARIA grid patterns, keyboard navigation, and screen reader support as core features—not add-ons
-                </p>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl mb-4">Modular Composition</h3>
-                <p className="text-muted leading-relaxed mb-6">
-                  Designed component API to support simple use cases easily while allowing teams to compose complex behaviors when needed
-                </p>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl mb-4">Engineering Partnership</h3>
-                <p className="text-muted leading-relaxed mb-6">
-                  Worked directly with Staff-level architects to ensure patterns were structurally sound, implementation-ready, and scalable
-                </p>
+            {/* Employee (Side Panel) */}
+            <div className="absolute inset-0 bg-white">
+              <div className="absolute inset-0 flex items-center justify-center p-8">
+                <div className="text-center max-w-md">
+                  <div className="text-xs uppercase tracking-wider mb-3 opacity-40 font-mono">Employee Version</div>
+                  <div className="text-lg opacity-60 leading-relaxed">
+                    Side panel slides in. Form-based editing. Clear save/discard actions. Focused experience for occasional users.
+                  </div>
+                </div>
               </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Before/After */}
-      <section className="py-20 px-8 border-t border-text/10">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-4xl italic mb-12">Before & After</h2>
             
-            {/* Image Comparison Slider */}
+            {/* Admin (Inline) */}
             <div 
-              ref={containerRef}
-              className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden group cursor-ew-resize select-none"
-              onMouseDown={handleMouseDown}
-              onMouseUp={handleMouseUp}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseUp}
-              onTouchMove={handleTouchMove}
-              onClick={handleClick}
+              className="absolute inset-0 overflow-hidden pointer-events-none"
+              style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
             >
-              {/* Before Image */}
-              <div className="absolute inset-0">
-                <img 
-                  src="/images/table-before.png" 
-                  alt="Before: Fragmented table implementations" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm font-body">
-                  BEFORE
-                </div>
-              </div>
-              
-              {/* After Image - controlled by slider */}
-              <div 
-                className="absolute inset-0 overflow-hidden transition-none pointer-events-none"
-                style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-              >
-                <img 
-                  src="/images/table-after.png" 
-                  alt="After: Unified Table 2.1 Pattern" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded text-sm font-body">
-                  AFTER
-                </div>
-              </div>
-              
-              {/* Slider Handle */}
-              <div 
-                className="absolute top-0 bottom-0 w-1 bg-white shadow-lg pointer-events-none"
-                style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
-              >
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center">
-                  <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                  </svg>
+              <div className="absolute inset-0 bg-white flex items-center justify-center p-8">
+                <div className="text-center max-w-md">
+                  <div className="text-xs uppercase tracking-wider mb-3 text-accent font-mono">Admin Version</div>
+                  <div className="text-lg opacity-60 leading-relaxed">
+                    Click to edit cells. Tab through fields. Row actions. Bulk operations. Speed-optimized for power users.
+                  </div>
                 </div>
               </div>
             </div>
             
-            <p className="text-sm text-center text-muted mt-6 font-body">
-              Drag the slider to compare fragmented implementations vs. unified Table 2.1 pattern
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Impact */}
-      <section className="py-20 px-8 border-t border-text/10 bg-white/30">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-4xl italic mb-12">Impact</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center p-8 border border-text/10 rounded-lg">
-                <div className="text-5xl font-display text-accent mb-4">80%</div>
-                <p className="text-sm font-body tracking-wider">Product Surface Adoption</p>
-              </div>
-              <div className="text-center p-8 border border-text/10 rounded-lg">
-                <div className="text-5xl font-display text-accent mb-4">32</div>
-                <p className="text-sm font-body tracking-wider">Teams Using Component</p>
-              </div>
-              <div className="text-center p-8 border border-text/10 rounded-lg">
-                <div className="text-5xl font-display text-accent mb-4">27.6K+</div>
-                <p className="text-sm font-body tracking-wider">Weekly Insertions</p>
+            {/* Slider Handle */}
+            <div 
+              className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg pointer-events-none"
+              style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
+            >
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 bg-white rounded-full shadow-lg flex items-center justify-center text-xl">
+                ⟷
               </div>
             </div>
-            <div className="mt-12 p-8 bg-white rounded-lg">
-              <p className="text-lg leading-relaxed">
-                Table 2.1 became the foundation for data-dense interfaces across Dayforce, eliminating thousands of hours of duplicated engineering work and establishing consistent, accessible patterns that users now expect throughout the platform.
-              </p>
+          </div>
+          <p className="text-center text-xs opacity-30 mt-4 font-mono">← Employee (Side Panel) | Admin (Inline) →</p>
+        </section>
+
+        {/* Impact */}
+        <section className="py-20 border-t border-gray-200 bg-black text-white -mx-8 px-8">
+          <div className="text-[10px] tracking-widest uppercase font-mono mb-8" style={{color: '#00a86b'}}>Impact</div>
+          <h2 className="font-display text-4xl mb-16">Platform-wide standardization</h2>
+          
+          <div className="grid md:grid-cols-3 gap-12 mb-16">
+            <div>
+              <div className="text-5xl font-display mb-3">80%</div>
+              <div className="text-sm opacity-60">Product surfaces using template</div>
             </div>
-          </motion.div>
-        </div>
-      </section>
+            <div>
+              <div className="text-5xl font-display mb-3">32</div>
+              <div className="text-sm opacity-60">Teams standardized on pattern</div>
+            </div>
+            <div>
+              <div className="text-5xl font-display mb-3">27.6K+</div>
+              <div className="text-sm opacity-60">Weekly component insertions</div>
+            </div>
+          </div>
 
-      {/* Next Project */}
-      <section className="py-20 px-8 border-t border-text/10">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <Link href="/work/notification-framework" className="group inline-block">
-              <p className="text-sm font-body text-muted tracking-wider mb-4">NEXT PROJECT</p>
-              <h3 className="font-display text-5xl group-hover:italic transition-all">
-                Notification Framework →
-              </h3>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="border-l-2 pl-6" style={{borderColor: '#00a86b'}}>
+              <div className="text-sm mb-2 opacity-60">Consistency</div>
+              <div className="opacity-90">Users learned CRUD once, applied everywhere. No more relearning patterns per product.</div>
+            </div>
+            <div className="border-l-2 pl-6" style={{borderColor: '#00a86b'}}>
+              <div className="text-sm mb-2 opacity-60">Efficiency</div>
+              <div className="opacity-90">Teams ship CRUD in days, not weeks. No rebuilding flows from scratch.</div>
+            </div>
+          </div>
+        </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-8 border-t border-text/10">
-        <div className="max-w-5xl mx-auto flex justify-between items-center text-sm font-body text-muted">
-          <Link href="/" className="hover:text-text transition-colors">← Back to Home</Link>
-          <p>© 2026 Angie Yoo</p>
-        </div>
-      </footer>
+        {/* Next */}
+        <section className="py-20">
+          <Link href="/work/notification-framework" className="group">
+            <div className="text-[10px] tracking-widest uppercase font-mono opacity-40 group-hover:opacity-100 transition mb-4">Next Project</div>
+            <div className="font-display text-3xl group-hover:italic transition">Notification Framework →</div>
+          </Link>
+        </section>
+      </div>
     </main>
   )
 }
