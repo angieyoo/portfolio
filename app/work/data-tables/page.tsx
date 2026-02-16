@@ -21,7 +21,7 @@ const card = {
   show: { opacity: 1, y: 0 },
 };
 
-export function FragmentationCards() {
+function FragmentationCards() {
   const reduceMotion = useReducedMotion();
 
   return (
