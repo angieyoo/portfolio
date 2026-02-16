@@ -296,7 +296,7 @@ export default function About() {
       <footer className="py-12 px-8 border-t border-text/10">
         <div className="max-w-5xl mx-auto flex justify-between items-center text-sm font-body text-muted">
           <p>© 2026 Portfolio</p>
-          <p>Built with Claude, Github & Vercel</p>
+          <p>Built with Claude, Framer, Vercel</p>
         </div>
       </footer>
     </main>
