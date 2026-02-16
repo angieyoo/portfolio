@@ -29,7 +29,7 @@ export default function Home() {
       title: "Notification Framework",
       discipline: "Systems Thinking",
       tags: ["Systems Thinking", "Interaction Design"],
-      slug: "work-notification.html"
+      slug: "work/notification-framework"
     },
     {
       year: "2025-6",
@@ -43,14 +43,14 @@ export default function Home() {
       title: "Wayfinding",
       discipline: "Navigation Architecture",
       tags: ["IA", "Research"],
-      slug: "work-wayfinding.html"
+      slug: "work/wayfinding"
     },
     {
       year: "2024",
       title: "Loading States",
       discipline: "Interaction Patterns",
       tags: ["UX Patterns", "Performance"],
-      slug: "work-loading.html"
+      slug: "work/loading-states"
     }
   ]
 
