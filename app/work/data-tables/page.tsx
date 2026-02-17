@@ -300,57 +300,7 @@ export default function DataTables() {
         </section>
 
         {/* Visual Comparison */}
-        <section className="py-20">
-          <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-8 text-center">Visual Comparison</div>
-          <div 
-            ref={containerRef}
-            className="relative aspect-video bg-white rounded overflow-hidden shadow-lg cursor-ew-resize select-none"
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseUp}
-            onTouchMove={handleTouchMove}
-            onClick={handleClick}
-          >
-            {/* Employee (Side Panel) */}
-            <div className="absolute inset-0 bg-white">
-              <div className="absolute inset-0 flex items-center justify-center p-8">
-                <div className="text-center max-w-md">
-                  <div className="text-xs uppercase tracking-wider mb-3 opacity-40 font-mono">Employee Version</div>
-                  <div className="text-lg opacity-60 leading-relaxed">
-                    Side panel slides in. Form-based editing. Clear save/discard actions. Focused experience for occasional users.
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Admin (Inline) */}
-            <div 
-              className="absolute inset-0 overflow-hidden pointer-events-none"
-              style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-            >
-              <div className="absolute inset-0 bg-white flex items-center justify-center p-8">
-                <div className="text-center max-w-md">
-                  <div className="text-xs uppercase tracking-wider mb-3 text-accent font-mono">Admin Version</div>
-                  <div className="text-lg opacity-60 leading-relaxed">
-                    Click to edit cells. Tab through fields. Row actions. Bulk operations. Speed-optimized for power users.
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Slider Handle */}
-            <div 
-              className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg pointer-events-none"
-              style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
-            >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 bg-white rounded-full shadow-lg flex items-center justify-center text-xl">
-                ⟷
-              </div>
-            </div>
-          </div>
-          <p className="text-center text-xs opacity-30 mt-4 font-mono">← Employee (Side Panel) | Admin (Inline) →</p>
-        </section>
+       
 
         {/* Impact */}
         <section className="py-20 border-t border-gray-200 bg-black text-white -mx-8 px-8">
