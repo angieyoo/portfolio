@@ -1,20 +1,34 @@
 'use client'
 
 import Link from 'next/link'
+import { motion, useReducedMotion } from "framer-motion"
 
 export default function NotificationFramework() {
   return (
     <main className="min-h-screen bg-white">
-      <nav className="border-b border-gray-200 sticky top-0 bg-white z-50">
-        <div className="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
-          <Link href="/" className="text-xs hover:opacity-50 transition font-mono">← Back</Link>
-          <div className="text-xs opacity-30 font-mono">Platform Patterns · 2026</div>
+      <motion.nav 
+        className="fixed top-0 left-0 right-0 z-50 px-8 py-6 bg-white/80 backdrop-blur-sm border-b border-text/5"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <Link href="/" className="flex items-center gap-3 hover:opacity-70 transition-opacity">
+            <span className="text-sm font-body tracking-wider text-text">← BACK</span>
+          </Link>
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-body tracking-wider text-text">Notification Framework</span>
+          </div>
+          <div className="flex items-center gap-3">
+            {/*<span className="w-2 h-2 rounded-full bg-accent"></span>*/}
+            <span className="text-sm font-body tracking-wider text-text">Platform Patterns</span>
+          </div>
         </div>
-      </nav>
+      </motion.nav>
 
       <div className="max-w-5xl mx-auto px-8">
         <section className="py-20">
-          <div className="text-[10px] tracking-widest uppercase font-mono text-accent mb-6">Global Pattern · Everest Design System</div>
+          <div className="text-[10px] tracking-widest uppercase font-mono text-accent mb-6">Platform Patterns</div>
           <h1 className="font-display text-6xl leading-none mb-8">Notification Framework</h1>
           <p className="text-xl opacity-60 leading-relaxed max-w-xl font-display">
             From notification chaos to a coherent system for communicating with users across severity levels and contexts
