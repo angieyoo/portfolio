@@ -6,7 +6,6 @@ import Link from 'next/link'
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0)
-  const { scrollYProgress } = useScroll()
   
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -345,17 +344,18 @@ export default function Home() {
               <span className="italic">something remarkable</span>
             </h2>
 
-            <motion.button
-              className="px-10 py-5 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-primary transition-all duration-300"
+            <motion.a
+              href="mailto:hello@angieyoo.com"
+              className="px-8 py-4 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-primary transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               GET IN TOUCH
-            </motion.button>
+            </motion.a>
 
             <div className="mt-20 flex justify-center gap-12 text-sm font-body text-muted">
-              <a href="#" className="hover:text-text transition-colors">LinkedIn</a>
-              <a href="#" className="hover:text-text transition-colors">Email</a>
+              <a href="https://www.linkedin.com/in/yooangie/" className="hover:text-text transition-colors">LinkedIn</a>
+              <a href="mailto:hello@angieyoo.com" className="hover:text-text transition-colors">Email</a>
             </div>
           </motion.div>
         </div>
