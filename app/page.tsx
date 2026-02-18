@@ -57,7 +57,14 @@ export default function Home() {
       discipline: "Interaction Patterns",
       tags: ["UX Patterns", "Performance"],
       slug: "work/loading-states"
-    }
+    }, 
+    {
+      year: "2022-2026",
+      title: "Everest Design System",
+      discipline: "Interaction Patterns",
+      tags: ["Design System", "0 to 1"],
+      slug: "work/everest"
+    }, 
   ]
 
   return (
