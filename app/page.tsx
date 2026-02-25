@@ -127,51 +127,42 @@ export default function Home() {
             <span className="text-sm font-body text-muted tracking-wider">00 - HELLO</span>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
-          >
-            <h1 className="font-display text-7xl md:text-9xl font-normal mb-4 leading-none">
-              ANGIE
-            </h1>
-            <h1 className="font-display text-7xl md:text-9xl font-normal italic leading-none">
-              YOO
-            </h1>
-            <br/> 
-            <p className="text-xl md:text-2xl font-display leading-relaxed mb-8">
-              Principal-level product designer crafting thoughtful systems that scale. 
-            </p>
-            <p className="text-lg md:text-xl font-body text-muted leading-relaxed max-w-3xl">
-              I design the invisible infrastructure that makes complex products feel intuitive—from design systems to data architectures.
-            </p>
-          </motion.div>
+          <div className="flex items-end justify-between gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 1 }}
+            >
+              <h1 className="font-display text-7xl md:text-9xl font-normal mb-4 leading-none">
+                ANGIE
+              </h1>
+              <h1 className="font-display text-7xl md:text-9xl font-normal italic leading-none">
+                YOO
+              </h1>
+              <br/>
+              <p className="text-xl md:text-2xl font-display leading-relaxed mb-8">
+                Principal-level product designer crafting thoughtful systems that scale.
+              </p>
+              <p className="text-lg md:text-xl font-body text-muted leading-relaxed max-w-3xl">
+                I design the invisible infrastructure that makes complex products feel intuitive—from design systems to data architectures.
+              </p>
+            </motion.div>
 
-          {/* Expertise Areas */}
-          <motion.div
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-          >
-            {[
-              { title: "Design Systems", desc: "Component libraries & patterns" },
-              { title: "Platform Design", desc: "Scalable product foundations" },
-              { title: "Interaction Design", desc: "Micro-interactions & flows" }
-            ].map((expertise, index) => (
-              <motion.div
-                key={expertise.title}
-                className="group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 + index * 0.1, duration: 0.6 }}
-              >
-                <div className="h-1 w-12 bg-accent mb-3 group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-sm font-body font-semibold tracking-wider mb-1">{expertise.title}</h3>
-                <p className="text-xs font-body text-muted leading-relaxed">{expertise.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+            <motion.div
+              className="shrink-0 hidden md:block"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
+            >
+              <img
+                src="/images/memoji2.gif"
+                alt="Angie Yoo"
+                width={400}
+                height={400}
+                className="select-none"
+              />
+            </motion.div>
+          </div>
 
           {/* CTA Buttons */}
           <motion.div
@@ -285,7 +276,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-5xl italic mb-4">The Patterns Gallery</h2>
+            <h2 className="font-display text-5xl italic mb-4">Projects</h2>
             <p className="text-sm font-body text-muted tracking-wider">SELECTED WORKS</p>
           </motion.div>
 
