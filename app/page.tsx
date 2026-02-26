@@ -108,10 +108,17 @@ export default function Home() {
               <span className="text-accent">03</span> CONTACT
             </a>
           </div>
-          <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-accent"></span>
-            <span className="text-sm font-body tracking-wider text-text">AVAILABLE FOR WORK</span>
-          </div>
+          <a
+            href="https://www.linkedin.com/in/yooangie/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 hover:opacity-70 transition-opacity text-text"
+            aria-label="LinkedIn"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
+            </svg>
+          </a>
         </div>
       </motion.nav>
 
@@ -363,7 +370,7 @@ export default function Home() {
       <footer className="relative py-12 px-8 border-t border-text/10">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-sm font-body text-muted">
           <p>© 2026 Portfolio</p>
-          <p>Built with Claude, Github & Vercel</p>
+          <p>Built with Claude, Cursor & Vercel</p>
         </div>
       </footer>
     </main>
