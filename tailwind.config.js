@@ -9,13 +9,13 @@ module.exports = {
     extend: {
       fontFamily: {
         display: ['var(--font-display)', 'serif'],
-        body: ['var(--font-body)', 'monospace'],
+        body: ['var(--font-body)', 'sans-serif'],
       },
       colors: {
         primary: '#ffffff',
         text: '#1a1a1a',
         accent: '#2ecc71',
-        muted: '#666666',
+        muted: '#555555',
       },
     },
   },
