@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Bodoni_Moda, IBM_Plex_Mono } from 'next/font/google'
+import { Bodoni_Moda, IBM_Plex_Sans } from 'next/font/google'
 import './globals.css'
 
 const bodoni = Bodoni_Moda({ 
@@ -8,13 +8,15 @@ const bodoni = Bodoni_Moda({
   weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
   display: 'swap',
-  adjustFontFallback: false,
+  adjustFontFallback: true,
 })
 
-const mono = IBM_Plex_Mono({ 
+const sans = IBM_Plex_Sans({ 
   subsets: ['latin'],
   variable: '--font-body',
-  weight: ['300', '400', '500']
+  weight: ['300', '400', '500', '600'],
+  display: 'swap',
+  adjustFontFallback: true,
 })
 
 export const metadata: Metadata = {
@@ -29,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${bodoni.variable} ${mono.variable} font-body antialiased`}>
+      <body className={`${bodoni.variable} ${sans.variable} font-body antialiased`}>
         {children}
       </body>
     </html>
