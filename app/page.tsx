@@ -337,26 +337,25 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="relative py-32 px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <motion.div
+           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-6xl md:text-8xl mb-12 leading-tight">
-              Let's create
-              <br />
-              <span className="italic">something remarkable</span>
+            <h2 className="font-display text-5xl md:text-6xl mb-8">
+              Let's work <span className="italic">together</span>
             </h2>
-
-            <motion.a
+            <p className="text-lg text-muted mb-8">
+              Interested in collaborating? Get in touch.
+            </p>
+            <a 
               href="mailto:hello@angieyoo.com"
-              className="px-8 py-4 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-primary transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="inline-block px-10 py-4 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-white transition-all"
             >
-              GET IN TOUCH
-            </motion.a>
+              CONTACT ME
+            </a>
+          </motion.div>
 
             <div className="mt-20 flex justify-center gap-12 text-sm font-body text-muted">
               <a href="https://www.linkedin.com/in/yooangie/" className="hover:text-text transition-colors">LinkedIn</a>
