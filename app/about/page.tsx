@@ -137,11 +137,9 @@ export default function About() {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <a href="mailto:hello@angieyoo.com" className="px-6 py-3 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-white transition-all">
-              EMAIL
+              GET IN TOUCH
             </a>
-            <a href="/Angie_Yoo_Resume.pdf" download className="px-6 py-3 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-white transition-all">
-              DOWNLOAD CV
-            </a>
+           
           </motion.div>
         </div>
       </section>
