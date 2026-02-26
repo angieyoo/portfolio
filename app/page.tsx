@@ -357,10 +357,7 @@ export default function Home() {
             </a>
           </motion.div>
 
-          {/*  <div className="mt-20 flex justify-center gap-12 text-sm font-body text-muted">
-              <a href="https://www.linkedin.com/in/yooangie/" className="hover:text-text transition-colors">LinkedIn</a>
-              <a href="mailto:hello@angieyoo.com" className="hover:text-text transition-colors">Email</a>
-            </div>*/}
+        
           </motion.div>
         </div>
       </section>
