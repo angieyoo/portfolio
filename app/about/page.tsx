@@ -10,7 +10,7 @@ export default function About() {
       company: "Dayforce (Ceridian)",
       position: "Lead Product Designer, Platform Patterns",
       description: [
-        "Architected Global Patterns system defining cross-product experiences (navigation, search, notifications) across Dayforce's enterprise HCM platform, establishing unified interaction models for millions of users across 80+ product surfaces",
+        "Architected Global Patterns system defining cross-product experiences (navigation, notifications) across Dayforce's enterprise HCM platform, establishing unified interaction models for millions of users across 80+ product surfaces",
         "Shipped Table 2.1 as platform-wide standard, replacing 32 fragmented implementations with single token-driven pattern—now used across 80% of product surfaces with 27.6K+ weekly insertions and zero accessibility bugs post-launch",
         "Led first AI experience design for Dayforce, creating foundational components and interaction patterns that scale across agentic and intelligent UI contexts, establishing reusable building blocks for future AI product development",
         "Drove 80% adoption across 32 product teams through systematic pattern documentation, migration guidance, and direct partnership with engineering leads—transforming ad-hoc implementations into standardized, maintainable system",
