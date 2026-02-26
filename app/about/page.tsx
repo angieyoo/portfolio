@@ -126,7 +126,7 @@ export default function About() {
               Platform Systems & Architecture
             </p>
             <p className="text-lg leading-relaxed max-w-3xl">
-              <strong>Platform designer specializing in system-level problems that scale across products.</strong> 7 years building design systems that standardize cross-product experiences, define navigation architecture, and establish foundational patterns (tables, notifications, search) used by <strong>30+ teams serving millions of users</strong>.
+              <strong>Platform designer specializing in system-level problems that scale across products.</strong> 7 years building design systems that standardize cross-product experiences, define navigation architecture, and establish foundational patterns (tables, notifications, navigation) used by <strong>30+ teams serving millions of users</strong>.
             </p>
           </motion.div>
 
