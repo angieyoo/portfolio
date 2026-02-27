@@ -217,7 +217,7 @@ export default function DayforceRedesign() {
             <span className="text-sm font-body tracking-wider text-text">Cross-Product Redesign</span>
           </div>
            <div className="flex items-center gap-3">
-            <span className="text-sm font-body tracking-wider text-text">Vision -> Reality</span>
+            <span className="text-sm font-body tracking-wider text-text">Vision to Reality</span>
           </div>
         
         </div>
