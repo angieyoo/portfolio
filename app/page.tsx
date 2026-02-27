@@ -23,6 +23,15 @@ export default function Home() {
   }))
 
   const projects = [
+
+    {
+      year: "2026",
+      title: "Redesigning Dayforce",
+      discipline: "Systems Thinking",
+      tags: ["Systems Thinking", "Interaction Design"],
+      slug: "work/dayforce"
+    },
+
     {
       year: "2026",
       title: "Notification Framework",
