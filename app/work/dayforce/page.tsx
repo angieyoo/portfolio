@@ -121,7 +121,7 @@ function HeroSlider() {
 
             {/* Caption + progress dots */}
             <div className="flex items-center justify-between mt-4 px-1">
-                <p className="text-xs font-mono opacity-40 uppercase tracking-widest">{slide.caption}</p>
+                
                 <div className="flex items-center gap-2">
                     {SLIDES.map((_, i) => (
                         <button
