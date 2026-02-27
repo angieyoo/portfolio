@@ -11,25 +11,25 @@ const SLIDES = [
         src: '/images/recruiting.svg',
         label: 'Recruiting',
         tag: '01',
-        caption: 'Requisition-first pipeline with action-required state surfacing',
+        // caption: 'Requisition-first pipeline with action-required state surfacing',
     },
     {
         src: '/images/wfm.svg',
         label: 'Workforce Management',
         tag: '02',
-        caption: 'Progressive disclosure schedule view with exception tray',
+        // caption: 'Progressive disclosure schedule view with exception tray',
     },
     {
         src: '/images/benefits.svg',
         label: 'Benefits',
         tag: '03',
-        caption: 'Employee-decision-centered enrollment with plan comparison',
+        // caption: 'Employee-decision-centered enrollment with plan comparison',
     },
     {
         src: '/images/orgchart.svg',
         label: 'Org Chart',
         tag: '04',
-        caption: 'Hierarchical navigation pattern applied across HR surfaces',
+        // caption: 'Hierarchical navigation pattern applied across HR surfaces',
     },
 ]
 
@@ -210,36 +210,27 @@ export default function DayforceRedesign() {
                 transition={{ duration: 0.8 }}
             >
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                        <Link href="/" className="text-sm font-body tracking-wider text-text hover:opacity-70 transition-opacity">ANGIE YOO</Link>
-                        <span className="w-2 h-2 rounded-full bg-accent"></span>
-                    </div>
-                    <div className="flex gap-12 text-sm font-body tracking-wider text-text">
-                        <Link href="/about" className="hover:opacity-70 transition-opacity">
-                            <span className="text-accent">01</span> ABOUT
-                        </Link>
-                        <a href="/#works" className="hover:opacity-70 transition-opacity">
-                            <span className="text-accent">02</span> WORKS
-                        </a>
-                        <a href="/#contact" className="hover:opacity-70 transition-opacity">
-                            <span className="text-accent">03</span> CONTACT
-                        </a>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-accent"></span>
-                        <span className="text-sm font-body tracking-wider text-text">AVAILABLE FOR WORK</span>
-                    </div>
-                </div>
-            </motion.nav>
+          <Link href="/" className="flex items-center gap-3 hover:opacity-70 transition-opacity">
+            <span className="text-sm font-body tracking-wider text-text">← BACK</span>
+          </Link>
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-body tracking-wider text-text">Cross-Product Redesign</span>
+          </div>
+           <div className="flex items-center gap-3">
+            <span className="text-sm font-body tracking-wider text-text">Vision -> Reality</span>
+          </div>
+        
+        </div>
+      </motion.nav>
 
             <div className="max-w-5xl mx-auto px-8">
 
                 {/* ── Hero ── */}
                 <section className="pt-32 pb-12">
-                    <div className="text-[10px] tracking-widest uppercase font-mono text-accent mb-6">Product Design · HCM</div>
-                    <h1 className="font-display text-6xl leading-none mb-8">Designing for Cross-Product Complexity</h1>
-                    <p className="text-xl opacity-60 leading-relaxed max-w-xl font-display mb-12">
-                        Reimagining an enterprise HCM platform — from fragmented workflows to a coherent, pattern-driven experience across Recruiting, Workforce Management, and Benefits
+                    <div className="text-[10px] tracking-widest uppercase font-mono text-accent mb-6">Horizontal Design Leadership · Navigation & Patterns</div>
+                    <h1 className="font-display text-6xl leading-none mb-8">One platform.<br />One design language.</h1>
+                    <p className="text-xl opacity-80 leading-relaxed max-w-4xl font-display mb-12">
+                        How I acted as a horizontal design leader across a fragmented enterprise platform — establishing the navigation architecture and craft standard that unified 8 product areas.
                     </p>
 
                     {/* Slider lives here in the hero */}
@@ -251,15 +242,15 @@ export default function DayforceRedesign() {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         <div>
                             <div className="text-[10px] tracking-widest uppercase font-mono opacity-40 mb-2">Role</div>
-                            <div className="text-sm font-body">Principal Product Designer</div>
+                            <div className="text-sm font-body">Horizontal Design Lead</div>
                         </div>
                         <div>
                             <div className="text-[10px] tracking-widest uppercase font-mono opacity-40 mb-2">Scope</div>
-                            <div className="text-sm font-body">Recruiting · WFM · Benefits</div>
+                            <div className="text-sm font-body">8 product areas (benefits, document management, org chart, workforce management, onboarding, profile, forms, cases) </div>
                         </div>
                         <div>
                             <div className="text-[10px] tracking-widest uppercase font-mono opacity-40 mb-2">Focus</div>
-                            <div className="text-sm font-body">Patterns &amp; Platform Cohesion</div>
+                            <div className="text-sm font-body">Craft, IA &amp; Systems Architecture</div>
                         </div>
                         <div>
                             <div className="text-[10px] tracking-widest uppercase font-mono opacity-40 mb-2">Platform</div>
@@ -271,72 +262,118 @@ export default function DayforceRedesign() {
                 {/* ── Context ── */}
                 <section className="py-20 border-t border-gray-200">
                     <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Context</div>
-                    <h2 className="font-display text-4xl mb-8">An enterprise product that grew sideways</h2>
+                    <h2 className="font-display text-4xl mb-8">A product without design architecture</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-6">
-                        Dayforce started as a payroll engine and expanded aggressively — Recruiting, Workforce Management, Benefits, Learning, and more each added by separate teams over years. The result was a product that felt like a dozen applications wearing the same hat. Shared actions like filtering, managing records, or confirming changes looked and behaved differently depending on which module you were in, causing user friction.
+                        Dayforce expanded module by module, each team building independently. No shared navigation model, no consistent interaction language — the same action looked different in every surface. Switching modules felt like switching products.
                     </p>
                     <p className="text-lg opacity-80 leading-relaxed">
-                        The redesign had two mandates: <strong>modernize the visual experience</strong> and <strong>impose cross-module design patterns</strong> so the platform could scale without compounding fragmentation.
+                        My mandate: act as the platform's <strong>horizontal design leader</strong> — define the craft standard through patterns every surface would inherit, then prove it by shipping across the 8 product areas in 5 months.
                     </p>
                 </section>
 
                 {/* Context image */}
-                <ZoomableImage
+                {/*<ZoomableImage
                     src="/images/dayforce-before-after.png"
                     alt="Before / After — Module Fragmentation"
-                />
+                />*/}
 
-                {/* ── Pattern-first approach ── */}
+                {/* ── Wayfinding ── */}
                 <section className="py-20 border-t border-gray-200 bg-gray-50 -mx-8 px-8">
-                    <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Design Approach</div>
-                    <h2 className="font-display text-4xl mb-8">Patterns before pixels</h2>
+                    <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Design Approach - Wayfinding</div>
+                    <h2 className="font-display text-4xl mb-8">One navigation architecture for all product areas</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-12">
-                        Rather than redesigning each module in isolation, I identified the common design challenges that appeared everywhere and solved them once. Four pattern families emerged as the backbone of the redesign.
+                        Three patterns became the architectural foundation — each designed for coherence for end users.
                     </p>
 
-                    <div className="grid md:grid-cols-2 gap-8 mb-12">
+                    <div className="grid md:grid-cols-1 gap-8 mb-12">
+
                         <div className="bg-white p-8 rounded-lg border border-gray-200">
-                            <div className="text-sm font-medium mb-3 text-accent font-mono">Filters</div>
-                            <div className="font-display text-2xl mb-4">Universal record discovery</div>
+                            <div className="text-sm font-medium mb-3 text-accent font-mono">Contextual Navigation</div>
+                            <div className="font-display text-2xl mb-4">Feature Navigation</div>
                             <div className="text-sm opacity-80 leading-relaxed mb-4">
-                                Every module has lists of records. We standardized filter chips, faceted search, and saved views so users could transfer skills across Recruiting candidates, WFM schedules, and Benefits enrollment in the same mental model.
+                                Dayforce's single global nav collapsed everything into deep, hard-to-navigate nesting. Feature Nav offloads that complexity — handling up to 2 levels of local navigation so the global nav stays flat, while grounding users in exactly where they are within the product.
                             </div>
-                            <div className="text-xs font-mono opacity-40 uppercase tracking-widest">Recruiting · WFM · Benefits · Learning</div>
+
+                            <img src="/images/featurenav.svg" alt="Feature Nav" className="mx-auto block" />
+
+                            {/*<div className="text-xs font-mono opacity-40 uppercase tracking-widest">WFM · Recruiting · Benefits</div>*/}
+                        </div>
+
+                         <div className="bg-white p-8 rounded-lg border border-gray-200">
+                            <div className="text-sm font-medium mb-3 text-accent font-mono">Page Level Actions & Wayfinding</div>
+                            <div className="font-display text-2xl mb-4">Omnibar</div>
+                            <div className="text-sm opacity-80 leading-relaxed mb-4">
+                                Legacy page designs had no grounding elements — unclear page title, no breadcrumb, no sense of place. The Omnibar solved this in one component: page title, page-level actions, and wayfinding breadcrumbs, all in a consistent location across every surface.
+                            </div>
+
+                            <img src="/images/omnibar.svg" alt="Omnibar"/>
+
                         </div>
 
                         <div className="bg-white p-8 rounded-lg border border-gray-200">
-                            <div className="text-sm font-medium mb-3 text-accent font-mono">Bulk Actions</div>
-                            <div className="font-display text-2xl mb-4">Multi-record operations</div>
+                            <div className="text-sm font-medium mb-3 text-accent font-mono">Landing page</div>
+                            <div className="font-display text-2xl mb-4">Dashboard Page Layout Pattern</div>
                             <div className="text-sm opacity-80 leading-relaxed mb-4">
-                                Approving timesheets, advancing candidates, or enrolling employees in benefits all require selecting many records and acting on them. One consistent selection + action bar pattern replaced five different implementations.
+                                Every module starts with the same familiar structure: a grounding illustration, a quick orientation to the space, and aggregated data surfaced as clear action items — so users always know where they are and what to do next.
                             </div>
-                            <div className="text-xs font-mono opacity-40 uppercase tracking-widest">WFM · Recruiting · Benefits</div>
+
+                            <img src="/images/benefits.svg" alt="Dashboard Page Layout Template"/>
+
+                            {/*<div className="text-xs font-mono opacity-40 uppercase tracking-widest">Cross-module · Design System</div>*/}
                         </div>
 
-                        <div className="bg-white p-8 rounded-lg border border-gray-200">
-                            <div className="text-sm font-medium mb-3 text-accent font-mono">Status &amp; State</div>
-                            <div className="font-display text-2xl mb-4">Progress legibility</div>
-                            <div className="text-sm opacity-80 leading-relaxed mb-4">
-                                Candidates move through stages. Shifts get approved, swapped, or disputed. Benefits elections open, close, and pend. A unified status vocabulary — colors, labels, and icons encoded in semantic tokens — made state readable at a glance.
-                            </div>
-                            <div className="text-xs font-mono opacity-40 uppercase tracking-widest">Cross-module · Design System</div>
-                        </div>
-
-                        <div className="bg-white p-8 rounded-lg border border-gray-200">
-                            <div className="text-sm font-medium mb-3 text-accent font-mono">Contextual Detail Panel</div>
-                            <div className="font-display text-2xl mb-4">Inspect without leaving the list</div>
-                            <div className="text-sm opacity-80 leading-relaxed mb-4">
-                                HR professionals live in lists. A consistent slide-in detail panel — anchored to the right — let users review a candidate, timesheet, or benefit plan without losing their place in the larger dataset.
-                            </div>
-                            <div className="text-xs font-mono opacity-40 uppercase tracking-widest">Recruiting · WFM · Benefits</div>
-                        </div>
+                       
                     </div>
 
-                    <PlaceholderImage label="Cross-Module Pattern Reference Sheet" height={400} />
+                    {/*<PlaceholderImage label="Cross-Module Pattern Reference Sheet" height={400} />*/}
                 </section>
 
+                {/* ── Record Management ── */}
+                <section className="mt-20 py-20 border-t border-gray-200 bg-gray-50 -mx-8 px-8">
+                    <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Design Approach - Record Management</div>
+                    <h2 className="font-display text-4xl mb-8">Record management system that scales</h2>
+                    <p className="text-lg opacity-80 leading-relaxed mb-12">
+                        Three patterns became the architectural foundation — each designed for coherence for end users.
+                    </p>
+
+                    <div className="grid md:grid-cols-1 gap-8 mb-12">
+
+                        <div className="bg-white p-8 rounded-lg border border-gray-200">
+                            <div className="text-sm font-medium mb-3 text-accent font-mono">Common Layout</div>
+                            <div className="font-display text-2xl mb-4">Record List Page Layout Template</div>
+                            <div className="text-sm opacity-80 leading-relaxed mb-4">
+                                Dayforce is fundamentally a system of records — 80% of the product relies on data tables to create, view, and manage records. Without a shared template, teams assembled the same atomic components in different ways, creating inconsistent interaction patterns across every surface.
+                            </div>
+
+                            <img src="/images/recordlist.svg" alt="Record List" className="mx-auto block" />
+
+                            {/*<div className="text-xs font-mono opacity-40 uppercase tracking-widest">WFM · Recruiting · Benefits</div>*/}
+                        </div>
+
+                         <div className="bg-white p-8 rounded-lg border border-gray-200">
+                            <div className="text-sm font-medium mb-3 text-accent font-mono">Different Personas, Different Needs</div>
+                            <div className="font-display text-2xl mb-4">Persona-driven Variations</div>
+                            <div className="text-sm opacity-80 leading-relaxed mb-4">
+                                The complexity ran deeper than layout. Employee and admin personas have fundamentally different needs — employees managing their own records, admins operating at scale across many. Without a clear template and CRUD (Create, Read, Update, Delete) flows for each persona, every team was solving that divergence independently.
+                            </div>
+
+                            <img src="/images/admin-table.svg" alt="Table CRUD - Admin Persona"/>Inline-editable table for Admin/Power User persona with high density
+                            <br /><br />
+                            <img src="/images/employee-table.svg" alt="Table CRUD - Employee Persona"/>Side Panel editing for Employee Persona for focused editing
+
+                        </div>
+
+                       
+
+                       
+                    </div>
+
+                    {/*<PlaceholderImage label="Cross-Module Pattern Reference Sheet" height={400} />*/}
+                </section>
+
+
                 {/* ── Recruiting ── */}
-                <section className="py-20 border-t border-gray-200">
+               {/* <section className="py-20 border-t border-gray-200">
                     <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Module 01 — Recruiting</div>
                     <h2 className="font-display text-4xl mb-8">From pipeline chaos to candidate clarity</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-6">
@@ -370,9 +407,9 @@ export default function DayforceRedesign() {
                         <PlaceholderImage label="Recruiting — Interview Scheduling &amp; Offer Flow" height={280} />
                     </div>
                 </section>
-
+*/}
                 {/* ── WFM ── */}
-                <section className="py-20 border-t border-gray-200 bg-gray-50 -mx-8 px-8">
+               {/* <section className="py-20 border-t border-gray-200 bg-gray-50 -mx-8 px-8">
                     <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Module 02 — Workforce Management</div>
                     <h2 className="font-display text-4xl mb-8">Making the schedule readable again</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-6">
@@ -407,10 +444,10 @@ export default function DayforceRedesign() {
                     <div className="mt-12">
                         <PlaceholderImage label="WFM — Time &amp; Attendance Approval Flow" height={280} />
                     </div>
-                </section>
+                </section>*/}
 
                 {/* ── Benefits ── */}
-                <section className="py-20 border-t border-gray-200">
+              {/*  <section className="py-20 border-t border-gray-200">
                     <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Module 03 — Benefits</div>
                     <h2 className="font-display text-4xl mb-8">Benefits enrollment shouldn't feel like a tax form</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-6">
@@ -443,10 +480,10 @@ export default function DayforceRedesign() {
                     <div className="mt-12">
                         <PlaceholderImage label="Benefits — Admin View: Enrollment Status Dashboard" height={280} />
                     </div>
-                </section>
+                </section>*/}
 
                 {/* ── Pattern system ── */}
-                <section className="py-20 border-t border-gray-200 bg-gray-50 -mx-8 px-8">
+               {/* <section className="py-20 border-t border-gray-200 bg-gray-50 -mx-8 px-8">
                     <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Design System Contribution</div>
                     <h2 className="font-display text-4xl mb-8">Redesign as pattern library</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-12">
@@ -480,36 +517,36 @@ export default function DayforceRedesign() {
                         src="/images/orgchart.svg"
                         alt="Org Chart — Hierarchical Navigation Pattern"
                     />
-                </section>
+                </section>*/}
 
                 {/* ── Impact ── */}
-                <section className="py-20 border-t border-gray-200 bg-black text-white -mx-8 px-8">
+                <section className="mt-20 py-20 border-t border-gray-200 bg-black text-white -mx-8 px-8">
                     <div className="text-[10px] tracking-widest uppercase font-mono mb-8" style={{ color: '#00a86b' }}>Impact</div>
                     <h2 className="font-display text-4xl mb-16">A platform that feels like one product</h2>
 
                     <div className="grid md:grid-cols-3 gap-12 mb-16">
                         <div>
-                            <div className="text-5xl font-display mb-3">12</div>
-                            <div className="text-sm opacity-60">Reusable cross-module patterns created</div>
+                            <div className="text-5xl font-display mb-3">8</div>
+                            <div className="text-sm opacity-60">Product areas modernized</div>
                         </div>
                         <div>
-                            <div className="text-5xl font-display mb-3">3→1</div>
-                            <div className="text-sm opacity-60">Bulk action implementations consolidated</div>
+                            <div className="text-5xl font-display mb-3">32</div>
+                            <div className="text-sm opacity-60">Teams adopted the patterns</div>
                         </div>
                         <div>
-                            <div className="text-5xl font-display mb-3">↑NPS</div>
-                            <div className="text-sm opacity-60">HR admin satisfaction improved in pilot cohort</div>
+                            <div className="text-5xl font-display mb-3">5 mo</div>
+                            <div className="text-sm opacity-60">To ship all 8 product areas</div>
                         </div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-8">
                         <div>
                             <div className="text-sm font-mono opacity-40 uppercase tracking-widest mb-3">Before</div>
-                            <div className="text-lg opacity-80 leading-relaxed">Each module designed independently. Common problems solved five different ways. Users switching modules felt like switching products. Pattern debt compounding with every new feature.</div>
+                            <div className="text-lg opacity-80 leading-relaxed">Each product area designed independently. No shared navigation model, no consistent record management pattern. Every team solving the same problems from scratch.</div>
                         </div>
                         <div>
                             <div className="text-sm font-mono opacity-40 uppercase tracking-widest mb-3">After</div>
-                            <div className="text-lg opacity-80 leading-relaxed">A system of patterns that transfers across surfaces. Users who learn filtering in Recruiting already know filtering in WFM. Design teams building new features inherit solutions instead of reinventing them.</div>
+                            <div className="text-lg opacity-80 leading-relaxed">8 product areas shipped in 5 months — because patterns were defined once and inherited, not reinvented. 32 teams adopted the system solutions while maintaining feature variability.</div>
                         </div>
                     </div>
                 </section>
@@ -519,10 +556,10 @@ export default function DayforceRedesign() {
                     <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Reflection</div>
                     <h2 className="font-display text-4xl mb-8">What I'd do differently</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-6">
-                        The hardest part of redesigning an enterprise product isn't the design — it's the organizational alignment. Module teams had strong opinions about their user's uniqueness. The most important skill was finding the 80% that was genuinely common and making that undeniable through evidence, then giving teams real control over the 20% that was legitimately different.
+                        The hardest part of redesigning an enterprise product isn't the design — it's the organizational alignment. Feature teams had strong opinions about their user's uniqueness. The most important skill was finding the 80% that was genuinely common and making that undeniable through evidence, then giving teams real control over the 20% that was legitimately different.
                     </p>
                     <p className="text-lg opacity-80 leading-relaxed">
-                        If I were starting again, I'd invest earlier in shared research — bringing recruiting researchers and WFM researchers into the same room to find shared pain points. The pattern library came from design synthesis; it would have been even stronger if it had come from shared research synthesis first.
+                        You can't mandate quality from above. The patterns succeeded because teams wanted to use them, enabling them to ship quickly with research-driven solutions — not because they had to. That's the only kind of scale that holds.
                     </p>
                 </section>
 
