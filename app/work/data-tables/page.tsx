@@ -248,7 +248,7 @@ export default function DataTables() {
               <div className="text-sm opacity-80 leading-relaxed mb-4">
                 Compact or Spacious. Teams configure defaults; users can adjust. Spacing tokens ensure all three feel intentional, not broken.
               </div>
-                <img src="/images/table-density.svg" alt="Data Tables — Density Variations"/> 
+                <img src="/images/table-density.png" alt="Data Tables — Density Variations"/> 
             </div>
 
             <div className="bg-white p-8 rounded-lg border border-gray-200">
