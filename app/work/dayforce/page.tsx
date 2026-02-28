@@ -160,10 +160,10 @@ export default function DayforceRedesign() {
                 <section className="pt-32 pb-12">
                     <div className="text-[10px] tracking-widest uppercase font-mono text-accent mb-6">Horizontal Design Leadership · Enterprise HCM</div>
                     <h1 className="font-display text-6xl leading-none mb-8">
-                        A product without<br />design architecture.
+                        Re-architecting a fragmented enterprise product
                     </h1>
                     <p className="text-xl opacity-80 leading-relaxed max-w-5xl font-display mb-12">
-                        Dayforce grew module-by-module — 32 product areas, each built independently, no shared patterns. I stepped in as the platform's horizontal design leader to define the navigation architecture and interaction contracts that would unify the entire product.
+                        As the platform’s horizontal design lead, I redefined the navigation architecture and interaction model across 8 product areas, establishing shared structural foundations that aligned 32 teams under a unified product system.
                     </p>
                     <HeroSlider />
                 </section>
