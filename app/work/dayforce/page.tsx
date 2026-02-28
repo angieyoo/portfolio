@@ -163,7 +163,7 @@ export default function DayforceRedesign() {
                         A product without<br />design architecture.
                     </h1>
                     <p className="text-xl opacity-80 leading-relaxed max-w-5xl font-display mb-12">
-                        Dayforce grew module-by-module — 8 product areas, each built independently, no shared patterns. I stepped in as the platform's horizontal design leader to define the navigation architecture and interaction contracts that would unify the entire product.
+                        Dayforce grew module-by-module — 32 product areas, each built independently, no shared patterns. I stepped in as the platform's horizontal design leader to define the navigation architecture and interaction contracts that would unify the entire product.
                     </p>
                     <HeroSlider />
                 </section>
@@ -193,14 +193,14 @@ export default function DayforceRedesign() {
                 {/* ═══════════ CONTEXT ═══════════ */}
                 <section className="py-20 border-t border-gray-200">
                     <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Context</div>
-                    <h2 className="font-display text-4xl mb-8">The same interactions, countless different implementations</h2>
+                    <h2 className="font-display text-4xl mb-8">The same interactions, all implemented differently</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-6">
-                        Dayforce grew through acquisition and parallel team expansion. Each of the 8 product areas built its own navigation, record management, and page layouts. Filtering records in Benefits was a completely different interaction than filtering in Workforce Management — not because users needed it to be, but because no one had defined the shared architecture. <strong>32 teams were compounding the divergence every sprint.</strong>
+                        Dayforce grew through acquisition and parallel team expansion. Each of the 8 product areas in scope had built its own record management interactions, and page layouts. Filtering records in Benefits was a completely different interaction than filtering in Workforce Management — not because users needed it to be, but because no one had defined the shared architecture. <strong>32 product teams in total at Dayforce were compounding the divergence every sprint.</strong>
                     </p>
                     <div className="border-l-2 border-accent pl-6 py-1 mt-8">
-                        <div className="text-[12px] tracking-widest uppercase font-mono text-accent mb-2">My Bet</div>
+                        <div className="text-[12px] tracking-widest uppercase font-mono text-accent mb-2">Strategic Bet</div>
                         <div className="text-lg opacity-80 leading-relaxed">
-                            Work horizontally across all 8 product areas simultaneously — not embedded in one module. The risk was spreading too thin. The bet: solving shared structural problems once would be exponentially more valuable than optimizing any single surface.
+                            Work horizontally across carefully selected 8 product areas simultaneously — not embedded in one module. The bet: solving shared structural problems once would be exponentially more valuable than optimizing any single surface.
                         </div>
                     </div>
                 </section>
