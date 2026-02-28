@@ -180,7 +180,14 @@ export default function DataTables() {
           <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">The Problem</div>
           <h2 className="font-display text-4xl mb-8">Dayforce is fundamentally a system of records</h2>
           <p className="text-lg opacity-80 leading-relaxed mb-6">
-            Nearly 80% of Dayforce surfaces depended on data tables to create, view, and manage records. But each of the 32 product teams implemented its own interaction patterns, behaviors, and editing models—creating a fragmented, inconsistent experience for users navigating across the product.
+            Nearly 80% of Dayforce surfaces depended on data tables to create, view, and manage records. 
+But each of the 32 product teams implemented its own interaction patterns, behaviors, and editing models—creating a fragmented experience for users navigating across the product.
+
+Managers needed to quickly compare and update multiple employee records without drilling into each detail view. 
+Employees needed predictable ways to review and confirm their own data. 
+Administrators needed safe bulk actions across hundreds of records without risking errors.
+
+Instead, they encountered inconsistent interaction models that required relearning table behavior in every module.
           </p>
           <p className="text-lg opacity-80 leading-relaxed">
             The fragmentation ran deep. Recruiting teams expected inline editing. Payroll teams needed bulk selection and heavy mass-editing. Reporting teams relied on analytics views and inline filtering. No single pattern served everyone—so everyone built their own.
@@ -285,7 +292,7 @@ export default function DataTables() {
                 <br />
 
                 <img src="/images/actions-secondary-row.png" alt="Data Tables — Secondary Row Action"/> 
-                 <div className="text-sm opacity-80 font-medium mb-3 text-caption font-mono">Row actions that are feature specific. Limit to 2 max. (ie. Hire, Decline) </div>
+                 <div className="text-sm opacity-80 font-medium mb-3 text-caption font-mono">Row actions that are feature specific. (ie. Hire, Decline) </div>
                 <br />
 
                 <img src="/images/actions-bulk.png" alt="Data Tables — Bulk"/> 
@@ -297,7 +304,7 @@ export default function DataTables() {
             <div className="bg-white p-8 rounded-lg border border-gray-200">
               <div className="text-sm font-medium mb-3 text-accent font-mono">06 Fully Responsive</div>
               <div className="font-display text-xl mb-4">Works across responsive screen sizes</div>
-              <div className="text-sm opacity-80 leading-relaxed mb-4">blah</div>
+              <div className="text-sm opacity-80 leading-relaxed mb-4">Table templates scale down to smaller widths with column prioritization, horizontal scroll guardrails, and responsive action placement.</div>
               <img src="/images/table-responsive.png" alt="Data Tables — Responsiveness"/> 
            </div>
 
