@@ -298,7 +298,7 @@ export default function DataTables() {
               <div className="text-sm font-medium mb-3 text-accent font-mono">06 Fully Responsive</div>
               <div className="font-display text-xl mb-4">Works across responsive screen sizes</div>
               <div className="text-sm opacity-80 leading-relaxed mb-4">blah</div>
-              <img src="/images/table-responsive.svg" alt="Data Tables — Responsiveness"/> 
+              <img src="/images/table-responsive.png" alt="Data Tables — Responsiveness"/> 
            </div>
 
            <div className="bg-white p-8 rounded-lg border border-gray-200">
