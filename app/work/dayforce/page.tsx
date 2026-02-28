@@ -162,7 +162,7 @@ export default function DayforceRedesign() {
                     <h1 className="font-display text-6xl leading-none mb-8">
                         A product without<br />design architecture.
                     </h1>
-                    <p className="text-xl opacity-80 leading-relaxed max-w-3xl font-display mb-12">
+                    <p className="text-xl opacity-80 leading-relaxed max-w-5xl font-display mb-12">
                         Dayforce grew module-by-module — 8 product areas, each built independently, no shared patterns. I stepped in as the platform's horizontal design leader to define the navigation architecture and interaction contracts that would unify the entire product.
                     </p>
                     <HeroSlider />
@@ -255,7 +255,7 @@ export default function DayforceRedesign() {
                     <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Design Approach 2 · Record Management</div>
                     <h2 className="font-display text-4xl mb-4">Record management system that scales</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-12">
-                        80% of Dayforce is data tables. Without a shared template, 5 teams built 5 different configurations — the highest-leverage problem to solve.
+                        80% of Dayforce is data tables. Without a shared template, 32 teams built countless different configurations — the highest-leverage problem to solve.
                     </p>
 
                     {/* Record List */}
