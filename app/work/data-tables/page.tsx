@@ -2,7 +2,108 @@
 
 import Link from 'next/link'
 import { motion } from "framer-motion"
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
+
+
+
+
+function BeforeAfterSlider({
+  beforeSrc,
+  afterSrc,
+  beforeLabel = 'Before',
+  afterLabel = 'After',
+}: {
+  beforeSrc: string
+  afterSrc: string
+  beforeLabel?: string
+  afterLabel?: string
+}) {
+  const [position, setPosition] = useState(50)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const isDragging = useRef(false)
+
+  const updatePosition = useCallback((clientX: number) => {
+    const container = containerRef.current
+    if (!container) return
+    const rect = container.getBoundingClientRect()
+    const x = Math.max(0, Math.min(clientX - rect.left, rect.width))
+    setPosition((x / rect.width) * 100)
+  }, [])
+
+  const onPointerDown = useCallback((e: React.PointerEvent) => {
+    isDragging.current = true
+    ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+    updatePosition(e.clientX)
+  }, [updatePosition])
+
+  const onPointerMove = useCallback((e: React.PointerEvent) => {
+    if (!isDragging.current) return
+    updatePosition(e.clientX)
+  }, [updatePosition])
+
+  const onPointerUp = useCallback(() => {
+    isDragging.current = false
+  }, [])
+
+  return (
+    <div className="w-full">
+      <div
+        ref={containerRef}
+        className="relative w-full overflow-hidden rounded-lg border border-gray-200 cursor-col-resize select-none"
+        style={{ aspectRatio: '16/9' }}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+      >
+        {/* After (full, bottom layer) */}
+        <img
+          src={afterSrc}
+          alt={afterLabel}
+          className="absolute inset-0 w-full h-full object-cover"
+          draggable={false}
+        />
+
+        {/* Before (clipped, top layer) */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{ width: `${position}%` }}
+        >
+          <img
+            src={beforeSrc}
+            alt={beforeLabel}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ width: containerRef.current?.offsetWidth || '100%' }}
+            draggable={false}
+          />
+        </div>
+
+        {/* Divider line */}
+        <div
+          className="absolute top-0 bottom-0 w-px bg-white/80"
+          style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
+        >
+          {/* Handle */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 shadow-lg flex items-center justify-center gap-1">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M9 3L5 7L9 11" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M5 3L9 7L5 11" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Labels */}
+        <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-sm">
+          <span className="text-[10px] tracking-widest uppercase font-mono text-white">{beforeLabel}</span>
+        </div>
+        <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200">
+          <span className="text-[10px] tracking-widest uppercase font-mono text-text">{afterLabel}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 function ZoomableImage({ src, alt }: { src: string; alt: string }) {
   const [open, setOpen] = useState(false)
@@ -42,7 +143,7 @@ export default function DataTables() {
             <span className="text-sm font-body tracking-wider text-text">Data Tables</span>
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-sm font-body tracking-wider text-text">Platform Patterns · 2024</span>
+            <span className="text-sm font-body tracking-wider text-text">Platform Patterns</span>
           </div>
         </div>
       </motion.nav>
@@ -53,17 +154,18 @@ export default function DataTables() {
         <section className="pt-32 pb-12">
           <div className="text-[10px] tracking-widest uppercase font-mono text-accent mb-6">Platform Patterns</div>
           <h1 className="font-display text-6xl leading-none mb-8">Data Tables</h1>
-          <p className="text-xl opacity-60 leading-relaxed max-w-xl font-display">
-            Standardizing CRUD workflows across a system of records—replacing 32 fragmented implementations with one token-driven template used across 80% of product surfaces
+          <p className="text-xl opacity-80 leading-relaxed max-w-4xl font-display">
+            Standardizing CRUD workflows across a system of records—replacing 32 fragmented implementations with a table system used across 80% of product surfaces
           </p>
         </section>
         {/* Hero image */}
-        <ZoomableImage
+        <img
           src="/images/table1.svg"
           alt="Data Tables — Employee Persona"
-        />
+        /> 
+ 
 
-         <ZoomableImage
+        {/* <ZoomableImage
           src="/images/table2.svg"
           alt="Data Tables - Admin Persona"
         />
@@ -71,7 +173,7 @@ export default function DataTables() {
          <ZoomableImage
           src="/images/table0.svg"
           alt="Data Tables - Before"
-        />
+        />*/}
 
         {/* Problem */}
         <section className="py-20 border-t border-gray-200">
@@ -83,12 +185,12 @@ export default function DataTables() {
           <p className="text-lg opacity-80 leading-relaxed">
             The fragmentation ran deep. Recruiting teams expected inline editing. Payroll teams needed bulk selection and heavy mass-editing. Reporting teams relied on analytics views and inline filtering. No single pattern served everyone—so everyone built their own.
           </p>
-        </section>
 
-        {/* Fragmentation callout */}
-        <section className="py-12 -mx-8 px-8 bg-gray-50">
+          <br />
+           {/* Fragmentation callout */}
+        
           <div className="max-w-5xl mx-auto">
-            <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-8">Fragmentation Across Teams</div>
+            <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-8">Sample Fragmentation Across Teams</div>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white p-6 rounded-lg border border-gray-200">
                 <div className="text-accent font-mono text-xs uppercase tracking-widest mb-3">Recruiting Team</div>
@@ -113,7 +215,7 @@ export default function DataTables() {
         {/* Solution */}
         <section className="py-20 border-t border-gray-200 bg-gray-50 -mx-8 px-8">
           <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Solution</div>
-          <h2 className="font-display text-4xl mb-8">A modular template system</h2>
+          <h2 className="font-display text-4xl mb-8">A context-driven, modular table system</h2>
           <p className="text-lg opacity-80 leading-relaxed mb-6">
             Instead of forcing 32 teams to adopt a single pattern, I built a flexible template system that teams could configure for their specific use cases while maintaining platform consistency.
           </p>
@@ -121,32 +223,32 @@ export default function DataTables() {
             Rather than prescribing a single "right way," I identified reusable building blocks that teams could combine. The goal: maximum flexibility within a consistent interaction model.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-1 gap-8">
             <div className="bg-white p-8 rounded-lg border border-gray-200">
               <div className="text-sm font-medium mb-3 text-accent font-mono">01 Admin CRUD Template</div>
               <div className="font-display text-xl mb-4">Inline editing, full control</div>
               <div className="text-sm opacity-80 leading-relaxed mb-4">
-                Click to edit cells, tab through fields, bulk select, row actions, keyboard navigation. For teams managing structured records with frequent edits.
+                Click to edit cells, keyboard shortcuts, bulk select, row actions, nested levels. For users managing structured records with frequent edits.
               </div>
-              <div className="text-xs font-mono opacity-40 uppercase tracking-widest">Edit inline · Bulk actions · Row menu · Keyboard nav</div>
+               <img src="/images/admin-table.svg" alt="Data Tables — Admin Persona"/> 
             </div>
 
             <div className="bg-white p-8 rounded-lg border border-gray-200">
               <div className="text-sm font-medium mb-3 text-accent font-mono">02 Employee CRUD Template</div>
               <div className="font-display text-lg mb-4">Form-based editing, guided flow</div>
               <div className="text-sm opacity-80 leading-relaxed mb-4">
-                Row click opens a side panel for editing. Clean label-value interface with validation and autosaved state. One record at a time.
+                Row click opens a side panel for editing. Clean label-value interface with validation and autosaved state. Focusing on one record at a time.
               </div>
-              <div className="text-xs font-mono opacity-40 uppercase tracking-widest">Side panel · Form layout · Guided · Autosave</div>
+             <img src="/images/employee-table.svg" alt="Data Tables — Employee Persona"/> 
             </div>
 
             <div className="bg-white p-8 rounded-lg border border-gray-200">
               <div className="text-sm font-medium mb-3 text-accent font-mono">03 Density Options</div>
               <div className="font-display text-xl mb-4">Configurable row density</div>
               <div className="text-sm opacity-80 leading-relaxed mb-4">
-                Compact, standard, comfortable. Teams configure defaults; users can adjust. Spacing tokens ensure all three feel intentional, not broken.
+                Compact or Spacious. Teams configure defaults; users can adjust. Spacing tokens ensure all three feel intentional, not broken.
               </div>
-              <div className="text-xs font-mono opacity-40 uppercase tracking-widest">3 density levels · User preference · Consistent spacing tokens</div>
+                <img src="/images/table-density.svg" alt="Data Tables — Density Variations"/> 
             </div>
 
             <div className="bg-white p-8 rounded-lg border border-gray-200">
@@ -155,11 +257,10 @@ export default function DataTables() {
               <div className="text-sm opacity-80 leading-relaxed mb-4">
                 20+ filter types (text, date range, multi-select, etc.) that teams configure without rebuilding the filter interaction model from scratch.
               </div>
-              <div className="text-xs font-mono opacity-40 uppercase tracking-widest">20+ filter types · Saved filters · Clear applied state</div>
             </div>
 
             <div className="bg-white p-8 rounded-lg border border-gray-200">
-              <div className="text-sm font-medium mb-3 text-accent font-mono">05 Action Framework</div>
+              <div className="text-sm font-medium mb-3 text-accent font-mono">05 Actions Framework</div>
               <div className="font-display text-xl mb-4">Consistent table actions</div>
               <div className="text-sm opacity-80 leading-relaxed mb-4">
                 Dayforce had 287 different toolbar action patterns across tables. One framework standardizes hierarchy: primary · secondary → bulk actions → row menu.
@@ -173,9 +274,19 @@ export default function DataTables() {
               <div className="text-sm opacity-80 leading-relaxed mb-4">
                 Keyboard navigation, focus management, ARIA grid patterns, screen reader announcements for row operations—all embedded in the template so teams can't accidentally ship inaccessible tables.
               </div>
-              <div className="text-xs font-mono opacity-40 uppercase tracking-widest">Full keyboard nav · ARIA grid · Zero a11y defects post-launch</div>
+            
             </div>
+
+            <div className="bg-white p-8 rounded-lg border border-gray-200">
+              <div className="text-sm font-medium mb-3 text-accent font-mono">07 Fully Responsive</div>
+              <div className="font-display text-xl mb-4">Works across responsive screen sizes</div>
+              <div className="text-sm opacity-80 leading-relaxed mb-4">blah</div>
+              <img src="/images/table-responsive.svg" alt="Data Tables — Responsiveness"/> 
+           </div>
+       
           </div>
+
+           
         </section>
 
         {/* Template overview image */}
@@ -210,20 +321,20 @@ export default function DataTables() {
         {/* Eng collab image */}
 
         {/* Token detail */}
-        <section className="py-20 border-t border-gray-200 bg-gray-50 -mx-8 px-8">
+        {/*<section className="py-20 border-t border-gray-200 bg-gray-50 -mx-8 px-8">
           <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Token Architecture</div>
           <h3 className="font-display text-2xl mb-6">Tables as a token consumer</h3>
           <p className="text-lg opacity-80 leading-relaxed mb-8">
             Table 2.1 was designed as a first-class consumer of the Everest token system. Every spacing value, color, border, and typography style references a semantic token—not a hard-coded value. When the brand or theme changes, tables update automatically.
           </p>
 
-        </section>
+        </section>*/}
 
         {/* Visual comparison */}
-        <section className="py-20 border-t border-gray-200">
+       {/* <section className="py-20 border-t border-gray-200">
           <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Before / After</div>
           <h3 className="font-display text-2xl mb-8">One pattern, two personas, 3 contexts, scaled for every surface</h3>
-        </section>
+        </section>*/}
 
 
         {/* Impact */}
