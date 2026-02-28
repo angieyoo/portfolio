@@ -160,7 +160,7 @@ export default function DataTables() {
         </section>
         {/* Hero image */}
         <img
-          src="/images/table1.svg"
+          src="/images/table1.png"
           alt="Data Tables — Employee Persona"
         /> 
  
@@ -248,7 +248,7 @@ export default function DataTables() {
               <div className="text-sm opacity-80 leading-relaxed mb-4">
                 Compact or Spacious. Teams configure defaults; users can adjust. Spacing tokens ensure all three feel intentional, not broken.
               </div>
-                <img src="/images/table-density.svg" alt="Data Tables — Density Variations"/> 
+                <img src="/images/table-density.png" alt="Data Tables — Density Variations"/> 
             </div>
 
             <div className="bg-white p-8 rounded-lg border border-gray-200">
@@ -281,7 +281,7 @@ export default function DataTables() {
               <div className="text-sm font-medium mb-3 text-accent font-mono">07 Fully Responsive</div>
               <div className="font-display text-xl mb-4">Works across responsive screen sizes</div>
               <div className="text-sm opacity-80 leading-relaxed mb-4">blah</div>
-              <img src="/images/table-responsive.svg" alt="Data Tables — Responsiveness"/> 
+              <img src="/images/table-responsive.png" alt="Data Tables — Responsiveness"/> 
            </div>
        
           </div>
