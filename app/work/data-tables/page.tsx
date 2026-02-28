@@ -160,7 +160,7 @@ export default function DataTables() {
         </section>
         {/* Hero image */}
         <img
-          src="/images/table1.png"
+          src="/images/table1.svg"
           alt="Data Tables — Employee Persona"
         /> 
  
@@ -248,41 +248,67 @@ export default function DataTables() {
               <div className="text-sm opacity-80 leading-relaxed mb-4">
                 Compact or Spacious. Teams configure defaults; users can adjust. Spacing tokens ensure all three feel intentional, not broken.
               </div>
-                <img src="/images/table-density.png" alt="Data Tables — Density Variations"/> 
+                <img src="/images/table-density.svg" alt="Data Tables — Density Variations"/> 
             </div>
 
             <div className="bg-white p-8 rounded-lg border border-gray-200">
               <div className="text-sm font-medium mb-3 text-accent font-mono">04 Filter Framework</div>
               <div className="font-display text-xl mb-4">Standardized filtering UI</div>
               <div className="text-sm opacity-80 leading-relaxed mb-4">
-                20+ filter types (text, date range, multi-select, etc.) that teams configure without rebuilding the filter interaction model from scratch.
+                Simple, Standard, Complex Filter variations to suit different user needs
               </div>
+              <img src="/images/filter-quick.png" alt="Data Tables — Quick Filters"/> 
+              <div className="text-sm opacity-80 font-medium mb-3 text-caption font-mono">Quick filters that are most commonly used by the user</div>
+                <br />
+              
+
+              <img src="/images/filter-panel.png" alt="Data Tables — Filters Side Panel"/> 
+                 <div className="text-sm opacity-80 font-medium mb-3 text-caption font-mono">Side Filter Panel to list all filters for the table</div>
             </div>
 
             <div className="bg-white p-8 rounded-lg border border-gray-200">
               <div className="text-sm font-medium mb-3 text-accent font-mono">05 Actions Framework</div>
               <div className="font-display text-xl mb-4">Consistent table actions</div>
               <div className="text-sm opacity-80 leading-relaxed mb-4">
-                Dayforce had 287 different toolbar action patterns across tables. One framework standardizes hierarchy: primary · secondary → bulk actions → row menu.
+                Dayforce had 287 different toolbar actions across tables. One framework standardizes hierarchy: 
               </div>
-              <div className="text-xs font-mono opacity-40 uppercase tracking-widest">Action hierarchy · 287 actions normalized · Bulk actions</div>
+                <img src="/images/actions-page.png" alt="Data Tables — Page-level Actions"/> 
+                  <div className="text-sm opacity-80 font-medium mb-3 text-caption font-mono">Primary page-level (or table) actions (ie. Create new, Refresh, Save)</div>
+                <br />
+                
+                <img src="/images/actions-table.png" alt="Data Tables — Table-level Actions"/> 
+                  <div className="text-sm opacity-80 font-medium mb-3 text-caption font-mono">Common Table-level Actions (ie. Search, Filter, Custom View, Export, Import, View More)</div>
+                <br />
+
+                <img src="/images/actions-primary-row.png" alt="Data Tables — Primary Row Action"/> 
+                  <div className="text-sm opacity-80 font-medium mb-3 text-caption font-mono">Highest Priority Row Action (ie. Edit, Link to Details page)</div>
+                <br />
+
+                <img src="/images/actions-secondary-row.png" alt="Data Tables — Secondary Row Action"/> 
+                 <div className="text-sm opacity-80 font-medium mb-3 text-caption font-mono">Row actions that are feature specific. Limit to 2 max. (ie. Hire, Decline) </div>
+                <br />
+
+                <img src="/images/actions-bulk.png" alt="Data Tables — Bulk"/> 
+                  <div className="text-sm opacity-80 font-medium mb-3 text-caption font-mono">Contextual or bulk actions (ie. Archive, Delete) </div>
             </div>
 
+            
+
             <div className="bg-white p-8 rounded-lg border border-gray-200">
-              <div className="text-sm font-medium mb-3 text-accent font-mono">06 Accessibility Foundation</div>
+              <div className="text-sm font-medium mb-3 text-accent font-mono">06 Fully Responsive</div>
+              <div className="font-display text-xl mb-4">Works across responsive screen sizes</div>
+              <div className="text-sm opacity-80 leading-relaxed mb-4">blah</div>
+              <img src="/images/table-responsive.svg" alt="Data Tables — Responsiveness"/> 
+           </div>
+
+           <div className="bg-white p-8 rounded-lg border border-gray-200">
+              <div className="text-sm font-medium mb-3 text-accent font-mono">07 Accessibility Foundation</div>
               <div className="font-display text-xl mb-4">WCAG 2.1 AA baked in</div>
               <div className="text-sm opacity-80 leading-relaxed mb-4">
                 Keyboard navigation, focus management, ARIA grid patterns, screen reader announcements for row operations—all embedded in the template so teams can't accidentally ship inaccessible tables.
               </div>
             
             </div>
-
-            <div className="bg-white p-8 rounded-lg border border-gray-200">
-              <div className="text-sm font-medium mb-3 text-accent font-mono">07 Fully Responsive</div>
-              <div className="font-display text-xl mb-4">Works across responsive screen sizes</div>
-              <div className="text-sm opacity-80 leading-relaxed mb-4">blah</div>
-              <img src="/images/table-responsive.png" alt="Data Tables — Responsiveness"/> 
-           </div>
        
           </div>
 
