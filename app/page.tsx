@@ -60,13 +60,13 @@ export default function Home() {
       tags: ["IA", "Research"],
       slug: "work/wayfinding"
     },
-    {
-      year: "2025",
-      title: "Loading States",
-      discipline: "Interaction Patterns",
-      tags: ["UX Patterns", "Performance"],
-      slug: "work/loading-states"
-    }, 
+    // {
+    //   year: "2025",
+    //   title: "Loading States",
+    //   discipline: "Interaction Patterns",
+    //   tags: ["UX Patterns", "Performance"],
+    //   slug: "work/loading-states"
+    // }, 
     {
       year: "2022-2026",
       title: "Everest Design System",
