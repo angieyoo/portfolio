@@ -141,7 +141,7 @@ export default function AIChatPatterns() {
               <div className="text-sm opacity-60">Unified framework adopted across all AI features</div>
             </div>
             <div>
-              <div className="text-5xl font-display mb-3">32+</div>
+              <div className="text-5xl font-display mb-3">3</div>
               <div className="text-sm opacity-60">Product teams using shared AI interaction patterns</div>
             </div>
             <div>
