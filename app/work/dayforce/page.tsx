@@ -193,14 +193,18 @@ export default function DayforceRedesign() {
                 {/* ═══════════ CONTEXT ═══════════ */}
                 <section className="py-20 border-t border-gray-200">
                     <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Problem</div>
-                    <h2 className="font-display text-4xl mb-8">The same interactions, all implemented differently</h2>
+                    <h2 className="font-display text-4xl mb-8">One product, architected in parallel silos</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-6">
-                        Dayforce grew through acquisition and parallel team expansion. Each of the 8 product areas in scope had built its own record management interactions, and page layouts. Filtering records in Benefits was a completely different interaction than filtering in Workforce Management — not because users needed it to be, but because no one had defined the shared architecture. <strong>32 product teams in total at Dayforce were compounding the divergence every sprint.</strong>
+                        Dayforce expanded through acquisition and parallel team growth. Each of the 8 product areas evolved independently — defining its own navigation structures, record management logic, and page architectures.
+
+What appeared as inconsistent interactions on the surface was actually a deeper structural issue: there was no shared product architecture governing how modules related to each other. 
+
+As 32 product teams continued shipping independently, fragmentation compounded every sprint.
                     </p>
                     <div className="border-l-2 border-accent pl-6 py-1 mt-8">
                         <div className="text-[12px] tracking-widest uppercase font-mono text-accent mb-2">Strategic Bet</div>
                         <div className="text-lg opacity-80 leading-relaxed">
-                            Work horizontally across carefully selected 8 product areas simultaneously — not embedded in one module. The bet: solving shared structural problems once would be exponentially more valuable than optimizing any single surface.
+                            Work horizontally across carefully selected 8 product areas simultaneously — not embedded in one module. The bet: treating Dayforce as a platform and solving shared structural problems once would create exponentially more long-term value than optimizing any single surface.
                         </div>
                     </div>
                 </section>
