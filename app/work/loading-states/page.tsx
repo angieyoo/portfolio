@@ -31,8 +31,14 @@ export default function Home() {
       tags: ["Systems Thinking", "Interaction Design"],
       slug: "work/dayforce"
     },
-
     {
+      year: "2025-6",
+      title: "Data Tables",
+      discipline: "Platform Patterns",
+      tags: ["CRUD", "Templates", "Systems Thinking"],
+      slug: "work/data-tables"
+    },
+     {
       year: "2026",
       title: "Notification Framework",
       discipline: "Systems Thinking",
@@ -45,13 +51,6 @@ export default function Home() {
       discipline: "Platform Patterns",
       tags: ["AI", "Chat", "Systems Thinking"],
       slug: "work/ai-chat"
-    },
-    {
-      year: "2025-6",
-      title: "Data Tables",
-      discipline: "Platform Patterns",
-      tags: ["CRUD", "Templates", "Systems Thinking"],
-      slug: "work/data-tables"
     },
     {
       year: "2025",
