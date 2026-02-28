@@ -333,7 +333,7 @@ export default function DayforceRedesign() {
                     <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Design Approach - Record Management</div>
                     <h2 className="font-display text-4xl mb-8">Record management system that scales</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-12">
-                        Three patterns became the architectural foundation — each designed for coherence for end users.
+                        Table System solutions that enable coherence with flexibility feature teams need
                     </p>
 
                     <div className="grid md:grid-cols-1 gap-8 mb-12">
