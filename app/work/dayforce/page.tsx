@@ -192,7 +192,7 @@ export default function DayforceRedesign() {
 
                 {/* ═══════════ CONTEXT ═══════════ */}
                 <section className="py-20 border-t border-gray-200">
-                    <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Context</div>
+                    <div className="text-[10px] tracking-widest uppercase font-mono opacity-50 mb-6">Problem</div>
                     <h2 className="font-display text-4xl mb-8">The same interactions, all implemented differently</h2>
                     <p className="text-lg opacity-80 leading-relaxed mb-6">
                         Dayforce grew through acquisition and parallel team expansion. Each of the 8 product areas in scope had built its own record management interactions, and page layouts. Filtering records in Benefits was a completely different interaction than filtering in Workforce Management — not because users needed it to be, but because no one had defined the shared architecture. <strong>32 product teams in total at Dayforce were compounding the divergence every sprint.</strong>
