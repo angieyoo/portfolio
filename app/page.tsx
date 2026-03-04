@@ -94,6 +94,13 @@ export default function Home() {
       tags: ["Product Deisgn", "eComm Workflow"],
       slug: "work/frontier"
     }, 
+     {
+      year: "2016",
+      title: "The Food Network",
+      discipline: "Promotional Game",
+      tags: ["Complex Flows", "Game Mechanic Design"],
+      slug: "work/foodnetwork"
+    }, 
   ]
 
   return (
