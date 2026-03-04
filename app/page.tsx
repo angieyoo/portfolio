@@ -80,6 +80,13 @@ export default function Home() {
       tags: ["Design System", "0 to 1"],
       slug: "work/loblaw"
     }, 
+      {
+      year: "2018",
+      title: "Finning",
+      discipline: "Concepting through research",
+      tags: ["Concepting through research", "IoT"],
+      slug: "work/finning"
+    }, 
   ]
 
   return (
