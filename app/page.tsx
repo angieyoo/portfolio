@@ -82,7 +82,7 @@ export default function Home() {
     }, 
       {
       year: "2018",
-      title: "Finning",
+      title: "Finning - Motivating Safety",
       discipline: "Concepting through research",
       tags: ["Concepting through research", "IoT"],
       slug: "work/finning"
