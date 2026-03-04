@@ -91,7 +91,7 @@ export default function Home() {
       year: "2017",
       title: "Frontier Communications",
       discipline: "Concepting through research",
-      tags: ["Product Deisgn", "eComm Workflow"],
+      tags: ["Product Design", "eComm Workflow"],
       slug: "work/frontier"
     }, 
      {
