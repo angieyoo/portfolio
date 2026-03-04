@@ -87,6 +87,13 @@ export default function Home() {
       tags: ["Concepting through research", "IoT"],
       slug: "work/finning"
     }, 
+     {
+      year: "2017",
+      title: "Frontier Communications",
+      discipline: "Concepting through research",
+      tags: ["Product Deisgn", "eComm Workflow"],
+      slug: "work/frontier"
+    }, 
   ]
 
   return (
