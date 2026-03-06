@@ -58,10 +58,10 @@ export default function NotificationFramework() {
           </p>
         </section>
         {/* Hero image */}
-        <ZoomableImage
+        {/* <ZoomableImage
           src="/images/notification.svg"
           alt="Notification Framework — Decision Tree"
-        />
+        /> */}
 
 
         {/* Hero image */}
