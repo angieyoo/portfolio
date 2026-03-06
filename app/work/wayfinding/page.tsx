@@ -237,7 +237,7 @@ export default function Wayfinding() {
             </div>
             <div>
               <div className="text-5xl font-display mb-3">10K+</div>
-              <div className="text-sm opacity-60">Daily omnibar searches — users choosing speed over browsing</div>
+              <div className="text-sm opacity-60">Daily searches through App Header — users choosing speed over browsing</div>
             </div>
           </div>
 
