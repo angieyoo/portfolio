@@ -58,10 +58,10 @@ export default function NotificationFramework() {
           </p>
         </section>
         {/* Hero image */}
-        {/* <ZoomableImage
+        <ZoomableImage
           src="/images/notification.svg"
           alt="Notification Framework — Decision Tree"
-        /> */}
+        />
 
 
         {/* Hero image */}
@@ -112,10 +112,7 @@ export default function NotificationFramework() {
             Notification type shouldn't be a component choice — it's determined by two axes: <strong>how severe is this?</strong> and <strong>how long does the user need to see it?</strong>
           </p>
 
-          <ZoomableImage
-            src="/images/notification-matrix.svg"
-            alt="Persistence × Severity matrix — notification decision framework"
-          />
+         
         </section>
 
         {/* Solution */}
