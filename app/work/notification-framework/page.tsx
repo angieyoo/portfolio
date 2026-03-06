@@ -133,7 +133,7 @@ export default function NotificationFramework() {
               <div className="text-sm opacity-80 leading-relaxed mb-4">
                 Auto-dismisses after 4–6 seconds. For confirmations and low-severity updates.
               </div>
-              <div className="text-xs font-mono opacity-40 uppercase tracking-widest">Use when: action confirmed, no follow-up needed</div>
+              <div className="text-xs opacity-40 uppercase tracking-widest">Use when: action confirmed, no follow-up needed</div>
             </div>
 
             <div className="bg-white p-8 rounded-lg border border-gray-200">
