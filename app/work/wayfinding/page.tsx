@@ -161,7 +161,7 @@ export default function Wayfinding() {
               <div className="text-sm opacity-60">Reduction in "where is..." support tickets</div>
             </div>
             <div>
-              <div className="text-5xl font-display mb-3">8</div>
+              <div className="text-5xl font-display mb-3">6</div>
               <div className="text-sm opacity-60">Districts instead of 50+ top-level nav items</div>
             </div>
             <div>
