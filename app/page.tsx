@@ -187,7 +187,7 @@ export default function Home() {
                 Principal-level product designer crafting thoughtful systems that scale.
               </p>
               <p className="text-lg md:text-xl font-body text-muted leading-relaxed max-w-3xl">
-                I design the invisible infrastructure that makes complex products feel intuitive—from design systems to data architectures.
+                I translate complex workflows and product systems into clear, intuitive experiences—from interaction models to design infrastructure.
               </p>
             </motion.div>
 
