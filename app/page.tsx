@@ -23,6 +23,13 @@ export default function Home() {
   }))
 
   const projects = [
+    {
+      year: "2026",
+      title: "AI workflow for Design Systems",
+      discipline: "AI",
+      tags: ["AI", "Governance", "Claude Code"],
+      slug: "work/dschecker"
+    },
 
     {
       year: "2026",
@@ -187,7 +194,7 @@ export default function Home() {
                 Principal-level product designer crafting thoughtful systems that scale.
               </p>
               <p className="text-lg md:text-xl font-body text-muted leading-relaxed max-w-3xl">
-                I translate complex workflows and product systems into clear, intuitive experiences—from interaction models to design infrastructure.
+                I design the invisible infrastructure that makes complex products feel intuitive—from design systems to data architectures.
               </p>
             </motion.div>
 
