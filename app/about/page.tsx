@@ -10,7 +10,7 @@ export default function About() {
       company: "Dayforce (Ceridian)",
       position: "Lead Product Designer, Platform Patterns",
       description: [
-        "Architected Global Patterns system defining cross-product experiences (navigation, notifications) across Dayforce's enterprise HCM platform, establishing unified interaction models for millions of users across 80+ product surfaces",
+        "Architected Global Patterns system defining cross-product experiences (navigation, search, notifications) across Dayforce's enterprise HCM platform, establishing unified interaction models for millions of users across 80+ product surfaces",
         "Shipped Table 2.1 as platform-wide standard, replacing 32 fragmented implementations with single token-driven pattern—now used across 80% of product surfaces with 27.6K+ weekly insertions and zero accessibility bugs post-launch",
         "Led first AI experience design for Dayforce, creating foundational components and interaction patterns that scale across agentic and intelligent UI contexts, establishing reusable building blocks for future AI product development",
         "Drove 80% adoption across 32 product teams through systematic pattern documentation, migration guidance, and direct partnership with engineering leads—transforming ad-hoc implementations into standardized, maintainable system",
@@ -38,7 +38,7 @@ export default function About() {
         "Defined governance frameworks that balanced central standards with regional autonomy, creating contribution models that scaled pattern library from 40 to 120+ components without fragmentation",
         "Established metrics-driven adoption strategy tracking usage, consistency scores, and team velocity improvements, demonstrating system ROI and securing executive buy-in for continued investment"
       ]
-    }, 
+    },
     {
       period: "2019 — 2020",
       company: "Loblaw Digital",
@@ -48,7 +48,7 @@ export default function About() {
         "Designed theming architecture using tokens to separate brand expression from component logic, allowing brand teams to customize visual identity without forking codebase—reducing launch time from 6 months to 6 weeks",
         "Drove systems adoption in resistant organization, shifting teams from 'not invented here' mindset to shared-system model through education, demonstrable value (reduced rework), and incremental wins"
       ]
-    }, 
+    },
     {
       period: "2008 — 2019",
       company: "Shopify, TD Bank, Startups, etc",
@@ -68,11 +68,11 @@ export default function About() {
       description: "Interdisciplinary study combining design, technology, and human-computer interaction"
     },
     {
-      period: "",  
+      period: "",
       school: "University of British Columbia",
       degree: "Computer Science (2 years)",
       description: "Algorithms, data structures, software engineering principles"
-    } 
+    }
   ]
 
   const skills = {
@@ -84,7 +84,7 @@ export default function About() {
   return (
     <main className="min-h-screen bg-white text-text">
       {/* Navigation */}
-      <motion.nav 
+      <motion.nav
         className="fixed top-0 left-0 right-0 z-50 px-8 py-6 bg-white/80 backdrop-blur-sm border-b border-text/5"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -105,7 +105,7 @@ export default function About() {
             aria-label="LinkedIn"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
             </svg>
           </a>
         </div>
@@ -126,20 +126,26 @@ export default function About() {
               Platform Systems & Architecture
             </p>
             <p className="text-lg leading-relaxed max-w-3xl">
-              <strong>Platform designer specializing in system-level problems that scale across products.</strong> 7 years building design systems that standardize cross-product experiences, define navigation architecture, and establish foundational patterns (tables, notifications, navigation) used by <strong>30+ teams serving millions of users</strong>.
+              I design systems, not just screens. <br /><br />
+              For the past seven years I've built design infrastructure that lets product teams move fast without losing consistency — most recently at Dayforce, where I took the Everest design system from zero to serving 30+ product teams. The measure of it working: eight product areas modernized simultaneously in five months.
+              Before that, Loblaw Digital — one global, white-label system across 13 grocery brands. <br /><br />
+              A big part of the work is also bringing other designers along — helping them think in systems, see the value of shared patterns, and get genuinely excited about contributing to something bigger than their own product area.
+              What I know for sure: the best design systems don't get adopted because they're well-built. They get adopted because people trust them — and building that trust is just as much the job.
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="flex gap-6 mt-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <a href="mailto:hello@angieyoo.com" className="px-6 py-3 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-white transition-all">
-              GET IN TOUCH
+              EMAIL
             </a>
-           
+            <a href="/Angie_Yoo_Resume.pdf" download className="px-6 py-3 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-white transition-all">
+              DOWNLOAD CV
+            </a>
           </motion.div>
         </div>
       </section>
@@ -147,7 +153,7 @@ export default function About() {
       {/* Experience */}
       <section className="py-20 px-8 border-t border-text/10">
         <div className="max-w-5xl mx-auto">
-          <motion.h2 
+          <motion.h2
             className="font-display text-4xl italic mb-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -173,14 +179,14 @@ export default function About() {
                 <div className="md:col-span-9">
                   <h3 className="font-display text-2xl mb-2">{job.position}</h3>
                   <p className="text-lg text-accent mb-6">{job.company}</p>
-                 <ul className="space-y-3">
-                  {job.description.map((item, i) => (
-                    <li key={i} className="text-muted leading-relaxed flex gap-3">
-                      <span className="text-accent mt-1 flex-shrink-0">•</span>
-                      <span>{item}</span>
-                    </li>
-                ))}
-                </ul>
+                  <ul className="space-y-3">
+                    {job.description.map((item, i) => (
+                      <li key={i} className="text-muted leading-relaxed flex gap-3">
+                        <span className="text-accent mt-1 flex-shrink-0">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
             ))}
@@ -191,7 +197,7 @@ export default function About() {
       {/* Education */}
       <section className="py-20 px-8 border-t border-text/10">
         <div className="max-w-5xl mx-auto">
-          <motion.h2 
+          <motion.h2
             className="font-display text-4xl italic mb-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -228,7 +234,7 @@ export default function About() {
       {/* Skills */}
       <section className="py-20 px-8 border-t border-text/10">
         <div className="max-w-5xl mx-auto">
-          <motion.h2 
+          <motion.h2
             className="font-display text-4xl italic mb-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -250,7 +256,7 @@ export default function About() {
                 <h3 className="text-sm font-body tracking-wider text-accent mb-4">{category}</h3>
                 <div className="flex flex-wrap gap-3">
                   {items.map((skill) => (
-                    <span 
+                    <span
                       key={skill}
                       className="px-4 py-2 border border-text/20 rounded-full text-sm"
                     >
@@ -279,7 +285,7 @@ export default function About() {
             <p className="text-lg text-muted mb-8">
               Interested in collaborating? Get in touch.
             </p>
-            <a 
+            <a
               href="mailto:hello@angieyoo.com"
               className="inline-block px-10 py-4 border border-text rounded-full font-body text-sm tracking-wider hover:bg-text hover:text-white transition-all"
             >
